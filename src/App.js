@@ -10,7 +10,7 @@ const [ data, setData ] = useState([])
 
   useEffect(() => {
     const handleData = () => {
-      axios.get(`https://api.sportsdata.io/v3/nfl/scores/json/Schedules/2022?key=${process.env.REACT_APP_WEATHER_KEY}`)
+      axios.get(`https://api.sportsdata.io/v3/nfl/scores/json/Schedules/2022?key=${process.env.REACT_APP_SPORTS_KEY}`)
       .then(function(response){
           setData(response.data);
         })

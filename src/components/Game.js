@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import { Weather } from "./Weather";
 
 export const Game = ({data}) => {
 
-const [ weather, setWeather ] = useState({})  
+const [ weather, setWeather ] = useState([])  
 const [ gameWeather, setGameWeather ] = useState({})
 
   useEffect(() => {
@@ -20,8 +20,6 @@ const [ gameWeather, setGameWeather ] = useState({})
     handleData()
   }, [data])
 
-  console.log(weather)  
-
   return (
     <>
      {
@@ -36,10 +34,15 @@ const [ gameWeather, setGameWeather ] = useState({})
               <h2>{data.HomeTeam}</h2>
             </div>
             {
-              weather === undefined
-              ?<></>
-              :<>
-              </>
+              weather.map((weather, key ) => {
+                return (
+                  <Weather
+                    weather={weather}
+                    gametime={data.DateTime.slice(11,13)}
+                    key={key}
+                  />
+                )
+              })
             }
           </div> 
         }
