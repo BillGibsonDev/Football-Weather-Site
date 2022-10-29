@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Weather } from "./Weather";
+import { Odds } from "./Odds";
 
 export const Game = ({data}) => {
 
@@ -33,6 +34,9 @@ const [ gameWeather, setGameWeather ] = useState({})
               <span style={{ display: 'flex', alignItems: 'center', width: '100%'}}>@ <div className="line" style={{margin: '0', border: '1px solid #0000003d', width: '100px'}}></div></span>
               <h2>{data.HomeTeam}</h2>
             </div>
+            <Odds
+              scoreId={data.ScoreID}
+            />
             {
               weather.map((weather, key ) => {
                 return (
