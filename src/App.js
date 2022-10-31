@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import { Game } from './components/Game';
 
+import GlobalStyles from "./GlobalStyles";
 
 function App() {
 
@@ -25,6 +26,7 @@ const [ data, setData ] = useState([])
 
   return (
     <div className="App">
+      <GlobalStyles />
      {
       !data
       ? <></>

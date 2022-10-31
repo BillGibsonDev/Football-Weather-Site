@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Weather } from "./Weather";
 import { Odds } from "./Odds";
 
+import styled from "styled-components";
 export const Game = ({data}) => {
 
 const [ weather, setWeather ] = useState([])  
@@ -22,7 +23,7 @@ const [ gameWeather, setGameWeather ] = useState({})
   }, [data])
 
   return (
-    <>
+    <StyledGame>
      {
       !data
       ? <></>
@@ -43,6 +44,7 @@ const [ gameWeather, setGameWeather ] = useState({})
                   <Weather
                     weather={weather}
                     gametime={data.DateTime.slice(11,13)}
+                    data={data}
                     key={key}
                   />
                 )
@@ -52,7 +54,15 @@ const [ gameWeather, setGameWeather ] = useState({})
         }
       </>
      }
-    </>
+    </StyledGame>
   );
 }
 
+const StyledGame = styled.article`
+  display: flex;
+  .game {
+    display: grid;
+    grid-template-columns: 30% 30% 40%;
+    width: 80%;
+  }
+`;
