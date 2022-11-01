@@ -1,50 +1,24 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-
-import { Game } from './components/Game';
-
+// styles
 import GlobalStyles from "./GlobalStyles";
+
+// pages
+import { Home } from "./pages/Home";
+import { Game } from "./pages/Game";
+
+// router
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
 
-const [ data, setData ] = useState([])
-
-  useEffect(() => {
-    const handleData = () => {
-      axios.get(`https://api.sportsdata.io/v3/nfl/scores/json/Schedules/2022?key=${process.env.REACT_APP_SPORTS_KEY}`)
-      .then(function(response){
-          setData(response.data);
-        })
-        .catch(function(error){
-          console.log(error)
-        })
-    }
-    handleData()
-  }, [])
-
-  console.log(data.filter(data => data.Week === 8 ).filter(data => data.AwayTeam !== 'BYE'))
-
   return (
-    <div className="App">
+    <>
       <GlobalStyles />
-     {
-      !data
-      ? <></>
-      : <>
-      <h1>Week 8</h1>
-        {
-          data.filter(data => data.Week === 8 ).filter(data => data.AwayTeam !== 'BYE').map((data, key) => {
-            return (
-              <Game
-                data={data}
-                key={key}
-              />
-            )
-          })
-        }
-      </>
-     }
-    </div>
+      <Routes>
+          <Route path='/' exact element={<Home />} /> 
+          <Route path="/games/:scoreId" element={<Game />} />
+      </Routes>
+
+    </>
   );
 }
 
