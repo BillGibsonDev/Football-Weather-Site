@@ -4,12 +4,11 @@ import axios from "axios";
 // components
 import { Weather } from "./Weather";
 import { Odds } from "./Odds";
+import { GameDetails } from "./GameDetails";
+import { BottomLine } from "./BottomLine";
 
 // styles
 import styled from "styled-components";
-
-// router
-import { Link } from 'react-router-dom';
 
 export const Game = ({data}) => {
 
@@ -29,7 +28,7 @@ const [ weather, setWeather ] = useState([])
     handleData()
   }, [data])
 
-  console.log(weather)
+  console.log(data)
 
   return (
     <StyledGame>
@@ -39,11 +38,9 @@ const [ weather, setWeather ] = useState([])
       : <>
         {
           <div className="game">
-            <div className="game-wrapper">
-              <h2>{data.AwayTeam}</h2>
-              <span >@ <div className="line" style={{margin: '0', border: '1px solid #0000003d', width: '100px'}}></div></span>
-              <h2>{data.HomeTeam}</h2>
-            </div>
+            <GameDetails
+              data={data}
+            />
             <Odds
               scoreId={data.ScoreID}
             />
@@ -67,15 +64,9 @@ const [ weather, setWeather ] = useState([])
             }
           </div> 
         }
-        <div className="bottom-line-wrapper">
-          <div className="bottom-line">
-            <h6>{data.Channel}</h6>
-            <div className="dash">-</div>
-            <h6>{data.DateTime.slice(11,13)}:{data.DateTime.slice(14,16)}</h6>
-          </div>
-          <a href="/">Sportsbook</a>
-          <Link to={`/games/${data.scoreId}`}>More Info</Link>
-        </div>
+      <BottomLine
+        data={data}
+      />
       </>
      }
     </StyledGame>
@@ -105,6 +96,10 @@ const StyledGame = styled.article`
       display: flex;
       justify-content: center;
       align-items: center;
+      h6 {
+        font-size: 16px;
+        font-weight: 400;
+      }
       .dash {
         margin: 0 4px;
       }

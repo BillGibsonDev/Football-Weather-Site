@@ -28,7 +28,8 @@ const [ data, setData ] = useState([])
 
   return (
     <StyledHome>
-      <h1>Week 8</h1>
+      <h1>NFL Weather Bot</h1>
+      <h1>Week 9</h1>
       {
         !data
         ? <></>
