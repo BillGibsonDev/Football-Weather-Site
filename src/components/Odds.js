@@ -20,7 +20,7 @@ export const Odds = ({scoreId}) => {
         }
     handleOdds();
     }, [scoreId])
-    
+
     return (
         <StyledOdds>
             <thead>
@@ -32,7 +32,7 @@ export const Odds = ({scoreId}) => {
             </thead>
             <tbody>
                 <tr>
-                    <td>{odds.AwayPointSpread}<div className="odds-line"></div>{odds.HomePointSpreadPayout}</td>
+                    <td>{odds.AwayPointSpread}<div className="odds-line"></div>{odds.AwayPointSpreadPayout}</td>
                     <td>{odds.AwayMoneyLine}</td>
                     <td>O{odds.OverUnder}<div className="odds-line"></div>{odds.OverPayout}</td>
                 </tr>

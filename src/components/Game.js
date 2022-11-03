@@ -3,9 +3,8 @@ import axios from "axios";
 
 // components
 import { Weather } from "./Weather";
-import { Odds } from "./Odds";
+//import { Odds } from "./Odds";
 import { GameDetails } from "./GameDetails";
-import { BottomLine } from "./BottomLine";
 
 // styles
 import styled from "styled-components";
@@ -28,8 +27,6 @@ const [ weather, setWeather ] = useState([])
     handleData()
   }, [data])
 
-  console.log(data)
-
   return (
     <StyledGame>
      {
@@ -41,9 +38,9 @@ const [ weather, setWeather ] = useState([])
             <GameDetails
               data={data}
             />
-            <Odds
+            {/* <Odds
               scoreId={data.ScoreID}
-            />
+            /> */}
             {
               weather.length === 0
               ? <h1 style={{textAlign: "center"}}>No Forecast Yet</h1>
@@ -64,9 +61,6 @@ const [ weather, setWeather ] = useState([])
             }
           </div> 
         }
-      <BottomLine
-        data={data}
-      />
       </>
      }
     </StyledGame>
@@ -81,29 +75,10 @@ const StyledGame = styled.article`
   border: 2px solid black;
   margin: 20px 0;
   padding: 12px;
+  width: 100%;
   .game {
-    display: grid;
-    grid-template-columns: 20% 40% 40%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-  }
-  .bottom-line-wrapper {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     width: 100%;
-    .bottom-line {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      h6 {
-        font-size: 16px;
-        font-weight: 400;
-      }
-      .dash {
-        margin: 0 4px;
-      }
-    }
   }
-
 `;

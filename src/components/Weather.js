@@ -13,14 +13,14 @@ export const Weather = ({weather, gametime, data}) => {
                 gameWeather.map((weather, key) => {
                     return (
                         <div className="weather-wrapper" key={key}>
+                            {
+                                data.StadiumDetails.State === ''
+                                ? <h5 className="city">{data.StadiumDetails.City}, {data.StadiumDetails.Country}</h5>
+                                : <h5 className="city">{data.StadiumDetails.City}, {data.StadiumDetails.State}, {data.StadiumDetails.Country}</h5>
+                            }
                             <div className="top-condition-container">
                                 <img src={weather.condition.icon} alt={weather.condition.text} />
                                 <div className="icon-text-container">
-                                    {
-                                        data.StadiumDetails.State === ''
-                                        ? <h5>{data.StadiumDetails.City}, {data.StadiumDetails.Country}</h5>
-                                        : <h5>{data.StadiumDetails.City}, {data.StadiumDetails.State}, {data.StadiumDetails.Country}</h5>
-                                    }
                                     <h4>{weather.condition.text}</h4>
                                     <h5>{Math.floor(weather.temp_f)}<span>F</span></h5>
                                 </div>
@@ -40,9 +40,13 @@ export const Weather = ({weather, gametime, data}) => {
 
 const StyledWeather = styled.div`
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     .weather-wrapper {
-        
+        h5 {
+            font-size: 1.2em;
+            font-weight: 400;
+        }
         .top-condition-container {
             display: flex;
             img {
@@ -51,13 +55,12 @@ const StyledWeather = styled.div`
             }
             .icon-text-container {
                 h4 {
-                    font-size: 1.8em;
+                    font-size: 1.5em;
                 }
                 h5 {
-                    font-size: 1.5em;
+                    font-size: 1.2em;
                     font-weight: 400;
                 }
-
             }
         }
         .bottom-condition-container {
