@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import * as palette from './ThemeVariables.js';
 
 const GlobalStyles = createGlobalStyle`
     * {
@@ -8,17 +9,18 @@ const GlobalStyles = createGlobalStyle`
     }
     html {
         scroll-behavior: smooth;
-        font-family: 'Roboto Mono', monospace;
+        font-family: 'Ubuntu', sans-serif;
         letter-spacing: 1px;
-        @media (max-width: 1450px){
-            font-size: 90%;
-        }
+        background: ${palette.backgroundColor};
         @media (max-width: 750px){
+            font-size: 90%;
+        } 
+        @media (max-width: 450px){
             font-size: 80%;
         } 
     }
     body {
-        font-family: 'Roboto Mono', monospace;
+        font-family: 'Ubuntu', sans-serif;
     }
     ul {
         list-style-type: none;

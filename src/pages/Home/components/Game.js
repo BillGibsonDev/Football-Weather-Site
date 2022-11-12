@@ -6,25 +6,30 @@ import { Weather } from "./Weather";
 //import { Odds } from "./Odds";
 import { GameDetails } from "./GameDetails";
 
+// router
+import { Link } from 'react-router-dom';
+
 // styles
 import styled from "styled-components";
+import * as palette from '../../../ThemeVariables.js';
 
 export const Game = ({data}) => {
 
 const [ weather, setWeather ] = useState([])  
 
+// api call to get the weather from database 
+// to throttle api calls
   useEffect(() => {
-    const handleData = () => {
-      axios.get(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_WEATHER_KEY}&q=${data.StadiumDetails.GeoLat},${data.StadiumDetails.GeoLong}&days=10&aqi=no&alerts=yes`)
+    const handleWeather = () => {
+      axios.get(`http://localhost:5000/games`)
       .then(function(response){
-        setWeather(response.data.forecast.forecastday.filter(weather => weather.date === data.Date.slice(0,10)));
-        console.log(response.data)
+        setWeather(response.data);
       })
       .catch(function(error){
         console.log(error)
       })
     }
-    handleData()
+    handleWeather()
   }, [data])
 
   return (
@@ -43,14 +48,13 @@ const [ weather, setWeather ] = useState([])
             /> */}
             {
               weather.length === 0
-              ? <h1 style={{textAlign: "center"}}>No Forecast Yet</h1>
+              ? <h3>No Forecast Yet</h3>
               :<>
                 {
-                  weather.map((weather, key ) => {
+                  weather.filter(weather => weather.ScoreID === data.ScoreID).map((weather, key) => {
                     return (
                       <Weather
                         weather={weather}
-                        gametime={data.DateTime.slice(11,13)}
                         data={data}
                         key={key}
                       />
@@ -58,7 +62,8 @@ const [ weather, setWeather ] = useState([])
                   })
                 }
               </>
-            }
+              }
+            <Link to={`/games/${data.ScoreID}`} className="game-link">More Info</Link>
           </div> 
         }
       </>
@@ -76,9 +81,26 @@ const StyledGame = styled.article`
   margin: 20px 0;
   padding: 12px;
   width: 100%;
+  background: ${palette.gameBackground};
   .game {
     display: flex;
     flex-direction: column;
     width: 100%;
+  }
+  .game-link {
+    font-size: 1.2em;
+    margin-top: 6px;
+  }
+  a {
+    text-align: center;
+    color: ${palette.accentColor2};
+    font-weight: 700;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  h3 {
+    text-align: center;
+    color: red;
   }
 `;
