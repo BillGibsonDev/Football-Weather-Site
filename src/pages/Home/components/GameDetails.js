@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 // styles
 import styled from "styled-components";
+import * as palette from '../../../ThemeVariables.js'
 
 export const GameDetails = ({data}) => {
 
@@ -22,12 +23,24 @@ export const GameDetails = ({data}) => {
         </div>
         <div className="channel-container">
           <h6>{data.Channel}</h6>
-          <div className="dash">-</div>
+          <div className="dash"></div>
           { 
             Number(data.DateTime.slice(11,13)) > 12 
             ? <h6>{day} {Number(data.DateTime.slice(11,13) - 12)}:{data.DateTime.slice(14,16)}pm EST</h6>
             : <h6>{day} {Number(data.DateTime.slice(11,13))}:{data.DateTime.slice(14,16)}am EST</h6>
           }
+        </div>
+        <div className="stadium-container">
+            <h6 className="stadium-name">{data.StadiumDetails.Name}</h6>
+            <div className="stadium-details-container">
+                {
+                    data.StadiumDetails.Type === "RetractableDome"
+                    ? <h6>Retractable Dome</h6>
+                    : <h6>{data.StadiumDetails.Type}</h6>
+                }
+                <div className="dash"></div>
+                <h6>{data.StadiumDetails.PlayingSurface}</h6>
+            </div>
         </div>
     </StyledDetails>
   )
@@ -45,26 +58,55 @@ const StyledDetails = styled.div`
         align-items: center;
         h2 {
             font-size: 2em;
+            color: ${palette.titleColor};
         }
         span {
+            color: ${palette.titleColor};
             margin: 0 10px;
             font-size: 16px;
         }
+    }
+    .dash {
+        background: black;
+        height: 2px;
+        width: 6px;
+        margin: 6px;
     }
     .channel-container {
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 8px 0;
+        margin-bottom: 8px;
+        h6 {
+            font-size: 1em;
+            font-weight: 400;
+            color: ${palette.titleColor};
+        }
+    }
+    .stadium-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        margin-bottom: 6px;
         h6 {
             font-size: 1.2em;
             font-weight: 400;
+            color: ${palette.titleColor};
         }
-        .dash {
-            background: black;
-            height: 2px;
-            width: 8px;
-            margin: 6px;
+        .stadium-name{
+            font-weight: 700;
+            color: ${palette.titleColor};
+        }
+        .stadium-details-container {
+            display: flex;
+            align-items: center;
+            h6 {
+                font-size: 1em;
+                font-weight: 400;
+                color: ${palette.titleColor};
+            }
         }
     }
 `;
