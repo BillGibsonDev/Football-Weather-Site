@@ -17,8 +17,6 @@ const Home = ({games}) => {
     dispatch(getGames());
   }, [dispatch])
 
-  console.log(games)
-
   return (
     <StyledHome>
       <div className="games-wrapper">

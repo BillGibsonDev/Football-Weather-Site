@@ -25,7 +25,6 @@ export const Weather = ({weather, game}) => {
                     <h6><span className="title">Rain</span>{Math.floor(weather.Rain)}<span className="unit">%</span></h6>
                 </div>
             </div>
-            
         </StyledWeather>
     )
 }

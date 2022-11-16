@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-
 // router
 import { useParams } from "react-router-dom";
 
@@ -12,34 +9,23 @@ import * as palette from '../../ThemeVariables.js';
 import { GameWeather } from "./components/GameWeather";
 import { GameDetails } from "./components/GameDetails";
 
-export const Game = () => {
+// redux
+import { connect } from 'react-redux';
+
+const Game = ({games}) => {
 
   const { scoreId } = useParams();
-
-  const [ game, setgame ] = useState([])
-
-  useEffect(() => {
-    const handlegame = () => {
-      axios.get(`https://api.sportsgame.io/v3/nfl/scores/json/ScoresByWeek/2022/10?key=${process.env.REACT_APP_SPORTS_KEY}`)
-      .then(function(response){
-        setgame(response.game); 
-      })
-      .catch(function(error){
-        console.log(error)
-      })
-    }
-    handlegame()
-  }, [scoreId])
 
   return (
     <StyledGame>
       <section className="game-wrapper">
         {
-          game.filter(game => game.ScoreID === Number(scoreId)).map((game, key) => {
+          games.filter(game => game.ScoreID === Number(scoreId)).map((game, key) => {
             return (
               <>
                 <GameDetails
-                  game={game}        
+                  game={game}
+                  key={key}        
                 />
                 {
                   game.Stadium.State === '' || game.Stadium.State === null
@@ -47,8 +33,7 @@ export const Game = () => {
                   : <h5 className="city">{game.Stadium.City}, {game.Stadium.State}, {game.Stadium.Country}</h5>
                 }
                 <GameWeather
-                  gametime={game.DateTime.slice(11,16)}
-                  game={game}
+                  weather={game.Weather}
                 />
               </>
             )
@@ -83,3 +68,11 @@ const StyledGame = styled.div`
     margin-bottom: 20px;
   }
 `;
+
+const mapStateToProps = (state) => {
+  return {
+    games: state.games.games,
+  };
+};
+
+export default connect(mapStateToProps)(Game);

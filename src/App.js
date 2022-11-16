@@ -3,7 +3,7 @@ import GlobalStyles from "./GlobalStyles";
 
 // pages
 import Home from "./pages/Home/Home";
-import { Game } from "./pages/Game/Game";
+import Game from "./pages/Game/Game";
 
 // components
 import { Nav } from "./components/Nav";

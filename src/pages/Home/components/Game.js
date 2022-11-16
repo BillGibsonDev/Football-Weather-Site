@@ -17,12 +17,12 @@ export const Game = ({game}) => {
         game={game}
       />
       {
-        !game.Weather
+        !game.Weather[0]
         ? <h3>No Forecast Yet</h3>
         :
           <Weather
             game={game}
-            weather={game.Weather}
+            weather={game.Weather[0]}
           />
         }
       <Link to={`/games/${game.ScoreID}`} className="game-link">More Info</Link>
