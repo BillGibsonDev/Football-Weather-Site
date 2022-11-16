@@ -1,41 +1,36 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-
+import { useEffect } from "react";
 // styles
 import styled from "styled-components";
 
 // components
 import { Game } from './components/Game';
 
-export const Home = () => {
+// redux
+import { connect, useDispatch } from 'react-redux';
+import { getGames } from '../../redux/actions/games.js';
 
-const [ data, setData ] = useState([])
+const Home = ({games}) => {
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const handleData = () => {
-      axios.get(`https://api.sportsdata.io/v3/nfl/scores/json/ScoresByWeek/2022/10?key=${process.env.REACT_APP_SPORTS_KEY}`)
-      .then(function(response){
-        setData(response.data);
-      })
-      .catch(function(error){
-        console.log(error)
-      })
-    }
-    handleData()
-  }, [])
+    dispatch(getGames());
+  }, [dispatch])
+
+  console.log(games)
 
   return (
     <StyledHome>
       <div className="games-wrapper">
         {
-          !data
+          !games
           ? <></>
           : <>
             {
-              data.filter(data => data.AwayTeam !== 'BYE').filter(data => data.Status === "Scheduled" || data.Status === 'InProgress').map((data, key) => {
+              games.filter(game => game.AwayTeam !== 'BYE').filter(game => game.Status === "Scheduled" || game.Status === 'InProgress').map((game, key) => {
                 return (
                   <Game
-                    data={data}
+                    game={game}
                     key={key}
                   />
                 )
@@ -44,25 +39,6 @@ const [ data, setData ] = useState([])
           </>
         }
         </div>
-        {/* <h1 style={{width: '80%', margin: '0 auto'}}>Completed Games</h1>
-        <div className="games-wrapper">
-          {
-            !data
-            ? <></>
-            : <>
-              {
-                data.filter(data => data.Week === 8 ).filter(data => data.AwayTeam !== 'BYE').filter(data => data.Status !== "Scheduled").map((data, key) => {
-                  return (
-                    <Game
-                      data={data}
-                      key={key}
-                    />
-                  )
-                })
-              }
-          </>
-          }
-        </div> */}
     </StyledHome>
   );
 }
@@ -71,7 +47,6 @@ const StyledHome = styled.div`
   .games-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    width: 80%;
     margin: auto;
     @media screen and (max-width:1110px) {
       grid-template-columns: 1fr 1fr;
@@ -82,3 +57,11 @@ const StyledHome = styled.div`
     }
   }
 `;
+
+const mapStateToProps = (state) => {
+  return {
+    games: state.games.games,
+  };
+};
+
+export default connect(mapStateToProps)(Home);

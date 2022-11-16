@@ -2,34 +2,30 @@
 import styled from 'styled-components';
 import * as palette from '../../../ThemeVariables.js';
 
-export const Weather = ({weather, data}) => {
+export const Weather = ({weather, game}) => {
 
     return (
         <StyledWeather>
-            {
-                weather.ScoreID !== data.ScoreID
-                ? <h2>No Forecast Yet</h2>
-                :
-                <div className="weather-wrapper">
-                    {
-                        data.StadiumDetails.State === '' || data.StadiumDetails.State === null
-                        ? <h5 className="city">{data.StadiumDetails.City}, {data.StadiumDetails.Country}</h5>
-                        : <h5 className="city">{data.StadiumDetails.City}, {data.StadiumDetails.State}, {data.StadiumDetails.Country}</h5>
-                    }
-                    <div className="top-condition-container">
-                        <img src={weather.Icon} alt={weather.Condition} />
-                        <div className="icon-text-container">
-                            <h4>{weather.Condition}</h4>
-                            <h5>{Math.floor(weather.Temp)}<span>F</span></h5>
-                        </div>
-                    </div>
-                    <div className="bottom-condition-container">
-                        <h6><span className="title">Wind</span>{Math.floor(weather.Wind)}<span className="unit">mph</span></h6>
-                        <h6><span className="title">Gusts</span>{Math.floor(weather.Gusts)}<span className="unit">mph</span></h6>
-                        <h6><span className="title">Rain</span>{Math.floor(weather.Rain)}<span className="unit">%</span></h6>
+            <div className="weather-wrapper">
+                {
+                    game.Stadium.State === '' || game.Stadium.State === null
+                    ? <h5 className="city">{game.Stadium.City}, {game.Stadium.Country}</h5>
+                    : <h5 className="city">{game.Stadium.City}, {game.Stadium.State}, {game.Stadium.Country}</h5>
+                }
+                <div className="top-condition-container">
+                    <img src={weather.Icon} alt={weather.Condition} />
+                    <div className="icon-text-container">
+                        <h4>{weather.Condition}</h4>
+                        <h5>{Math.floor(weather.Temp)}<span>F</span></h5>
                     </div>
                 </div>
-            }
+                <div className="bottom-condition-container">
+                    <h6><span className="title">Wind</span>{Math.floor(weather.Wind)}<span className="unit">mph</span></h6>
+                    <h6><span className="title">Gusts</span>{Math.floor(weather.Gusts)}<span className="unit">mph</span></h6>
+                    <h6><span className="title">Rain</span>{Math.floor(weather.Rain)}<span className="unit">%</span></h6>
+                </div>
+            </div>
+            
         </StyledWeather>
     )
 }

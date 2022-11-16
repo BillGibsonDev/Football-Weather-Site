@@ -1,12 +1,12 @@
 // colors
-export const accentColor = "#5484FF";
+export const accentColor = "#ad0e0e";
 export const accentColor2 = "#ffffff";
 export const accentColorTransparent = "#5484ff4b";
 export const helperGrey = "#dddddd";
 export const titleColor = "#ffffff";
-export const backgroundColor = '#2E2929';
-export const gameBackground = '#8b8b8b';
-export const labelColor = '#000000';
+export const backgroundColor = '#0c2535';
+export const gameBackground = '#000000';
+export const labelColor = '#cccccc';
 
 // font sizes
 export const titleSize = "2.5em";

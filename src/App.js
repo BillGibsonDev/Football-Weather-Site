@@ -2,7 +2,7 @@
 import GlobalStyles from "./GlobalStyles";
 
 // pages
-import { Home } from "./pages/Home/Home";
+import Home from "./pages/Home/Home";
 import { Game } from "./pages/Game/Game";
 
 // components

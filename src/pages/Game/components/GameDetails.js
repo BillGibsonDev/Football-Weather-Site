@@ -4,38 +4,38 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import * as palette from '../../../ThemeVariables.js';
 
-export const GameDetails = ({data}) => {
+export const GameDetails = ({game}) => {
 
     const [ day, setDay ] = useState('')
 
     useEffect(() => {
         const weekday = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
-        let d = new Date(data.Day)
+        let d = new Date(game.Day)
         setDay(weekday[d.getDay()])
-    }, [data])
+    }, [game])
 
   return (
     <StyledDetails>
         <div className="teams-container">
-            <h2>{data.AwayTeam}</h2>
+            <h2>{game.AwayTeam}</h2>
             <span>@</span>
-            <h2>{data.HomeTeam}</h2>
+            <h2>{game.HomeTeam}</h2>
         </div>
         <div className="channel-container">
-          <h6>{data.Channel}</h6>
+          <h6>{game.Channel}</h6>
           <div className="dash">-</div>
           { 
-            Number(data.DateTime.slice(11,13)) > 12 
-            ? <h6>{day} {Number(data.DateTime.slice(11,13) - 12)}:{data.DateTime.slice(14,16)}pm EST</h6>
-            : <h6>{day} {Number(data.DateTime.slice(11,13))}:{data.DateTime.slice(14,16)}am EST</h6>
+            Number(game.DateTime.slice(11,13)) > 12 
+            ? <h6>{day} {Number(game.DateTime.slice(11,13) - 12)}:{game.DateTime.slice(14,16)}pm EST</h6>
+            : <h6>{day} {Number(game.DateTime.slice(11,13))}:{game.DateTime.slice(14,16)}am EST</h6>
           }
         </div>
         <div className="stadium-container">
-            <h6 className="stadium-name">{data.StadiumDetails.Name}</h6>
+            <h6 className="stadium-name">{game.Stadium.Name}</h6>
             {
-                data.StadiumDetails.Type === "RetractableDome"
+                game.Stadium.Type === "RetractableDome"
                 ? <h6>Retractable Dome</h6>
-                : <h6>{data.StadiumDetails.Type}</h6>
+                : <h6>{game.Stadium.Type}</h6>
             }
         </div>
     </StyledDetails>

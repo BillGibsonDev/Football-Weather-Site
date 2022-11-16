@@ -5,7 +5,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import * as palette from '../../../ThemeVariables.js';
 
-export const GameWeather = ({gametime, data}) => {
+export const GameWeather = ({gametime, game}) => {
 
     const [ weather, setWeather ] = useState([])  
     const [ gameStart, setGameStart ] = useState(0);
@@ -13,9 +13,9 @@ export const GameWeather = ({gametime, data}) => {
 
     useEffect(() => {
         const handleWeather = () => {
-            axios.get(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_WEATHER_KEY}&q=${data.StadiumDetails.GeoLat},${data.StadiumDetails.GeoLong}&days=10&aqi=no&alerts=yes`)
+            axios.get(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_WEATHER_KEY}&q=${game.Stadium.GeoLat},${game.Stadium.GeoLong}&days=10&aqi=no&alerts=yes`)
             .then(function(response){
-                setWeather(response.data.forecast.forecastday.filter(weather => weather.date === data.Date.slice(0,10)));
+                setWeather(response.game.forecast.forecastday.filter(weather => weather.date === game.Date.slice(0,10)));
             })
             .catch(function(error){
                 console.log(error)
@@ -38,7 +38,7 @@ export const GameWeather = ({gametime, data}) => {
             setGameStart(13)
             setGameEnd(16)
         }
-    }, [data, gametime])
+    }, [game, gametime])
 
     return (
         <StyledWeather>

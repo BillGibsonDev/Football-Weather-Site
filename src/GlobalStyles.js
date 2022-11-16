@@ -12,6 +12,8 @@ const GlobalStyles = createGlobalStyle`
         font-family: 'Ubuntu', sans-serif;
         letter-spacing: 1px;
         background: ${palette.backgroundColor};
+        max-width: 1000px;
+        margin: auto;
         @media (max-width: 750px){
             font-size: 90%;
         } 
@@ -29,7 +31,7 @@ const GlobalStyles = createGlobalStyle`
         text-decoration: none;
     }
     button, a, label, input, textarea {
-        font-family: 'Roboto Mono', monospace;
+        font-family: 'Ubuntu', sans-serif;
         letter-spacing: 1px;
         padding: 2px;
         border-radius: 4px;

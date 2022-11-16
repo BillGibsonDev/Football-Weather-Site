@@ -16,39 +16,39 @@ export const Game = () => {
 
   const { scoreId } = useParams();
 
-  const [ data, setData ] = useState([])
+  const [ game, setgame ] = useState([])
 
   useEffect(() => {
-    const handleData = () => {
-      axios.get(`https://api.sportsdata.io/v3/nfl/scores/json/ScoresByWeek/2022/10?key=${process.env.REACT_APP_SPORTS_KEY}`)
+    const handlegame = () => {
+      axios.get(`https://api.sportsgame.io/v3/nfl/scores/json/ScoresByWeek/2022/10?key=${process.env.REACT_APP_SPORTS_KEY}`)
       .then(function(response){
-        setData(response.data); 
+        setgame(response.game); 
       })
       .catch(function(error){
         console.log(error)
       })
     }
-    handleData()
+    handlegame()
   }, [scoreId])
 
   return (
     <StyledGame>
       <section className="game-wrapper">
         {
-          data.filter(data => data.ScoreID === Number(scoreId)).map((data, key) => {
+          game.filter(game => game.ScoreID === Number(scoreId)).map((game, key) => {
             return (
               <>
                 <GameDetails
-                  data={data}        
+                  game={game}        
                 />
                 {
-                  data.StadiumDetails.State === '' || data.StadiumDetails.State === null
-                  ? <h5 className="city">{data.StadiumDetails.City}, {data.StadiumDetails.Country}</h5>
-                  : <h5 className="city">{data.StadiumDetails.City}, {data.StadiumDetails.State}, {data.StadiumDetails.Country}</h5>
+                  game.Stadium.State === '' || game.Stadium.State === null
+                  ? <h5 className="city">{game.Stadium.City}, {game.Stadium.Country}</h5>
+                  : <h5 className="city">{game.Stadium.City}, {game.Stadium.State}, {game.Stadium.Country}</h5>
                 }
                 <GameWeather
-                  gametime={data.DateTime.slice(11,16)}
-                  data={data}
+                  gametime={game.DateTime.slice(11,16)}
+                  game={game}
                 />
               </>
             )
