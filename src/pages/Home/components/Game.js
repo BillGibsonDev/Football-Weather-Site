@@ -17,15 +17,16 @@ export const Game = ({game}) => {
         game={game}
       />
       {
-        !game.Weather[0]
+        !game.Weather[0] || game.Weather.length < 2
         ? <h3>No Forecast Yet</h3>
-        :
-          <Weather
-            game={game}
-            weather={game.Weather[0]}
-          />
+        : <>
+            <Weather
+              game={game}
+              weather={game.Weather[0]}
+            />
+            <Link to={`/games/${game.ScoreID}`} className="game-link">More Info</Link>
+          </>
         }
-      <Link to={`/games/${game.ScoreID}`} className="game-link">More Info</Link>
     </StyledGame>
   );
 }
