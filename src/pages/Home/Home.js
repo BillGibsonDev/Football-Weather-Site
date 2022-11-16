@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 // components
 import { Game } from './components/Game';
+import { Loader } from '../../components/Loader';
 
 // redux
 import { connect, useDispatch } from 'react-redux';
@@ -22,7 +23,7 @@ const Home = ({games}) => {
       <div className="games-wrapper">
         {
           !games
-          ? <></>
+          ? <Loader />
           : <>
             {
               games.filter(game => game.AwayTeam !== 'BYE').filter(game => game.Status === "Scheduled" || game.Status === 'InProgress').map((game, key) => {
