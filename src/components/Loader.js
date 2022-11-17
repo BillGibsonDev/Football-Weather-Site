@@ -21,7 +21,6 @@ const StyledLoader = styled.div`
     border-radius: 50%;
     text-align: center;
     line-height: 150px;
-    font-family: sans-serif;
     font-size: 20px;
     color: ${palette.accentColor};
     letter-spacing: 4px;
