@@ -9,7 +9,7 @@ export const Nav = () => {
   return (
     <StyledNav>
       <Link to="/">Football Weather</Link>
-      <h2>Wildcard Weekend</h2>
+      <h2>Divisional Round</h2>
       <h3>Kickoff Forecasts</h3>
     </StyledNav>
   )

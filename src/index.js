@@ -13,7 +13,7 @@ import reducers from "./redux/reducers/index.js";
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const middleware = [
-    thunk,
+  thunk,
 ];
 
 const store = createStore(reducers, composeWithDevTools(
