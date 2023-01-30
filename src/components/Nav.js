@@ -9,8 +9,8 @@ export const Nav = () => {
   return (
     <StyledNav>
       <Link to="/">Football Weather</Link>
-      <h2>Championship Round</h2>
-      <h3>Kickoff Forecasts</h3>
+      <h2>Thank you!</h2>
+      <h3>See You Next Season</h3>
     </StyledNav>
   )
 }
