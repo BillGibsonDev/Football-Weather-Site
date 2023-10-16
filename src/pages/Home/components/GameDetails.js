@@ -6,15 +6,13 @@ import * as palette from '../../../ThemeVariables.js'
 
 export const GameDetails = ({game}) => {
 
-    const [ day, setDay ] = useState('')
+    const [ day, setDay ] = useState('');
 
     useEffect(() => {
         const weekday = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
         let d = new Date(game.Day)
         setDay(weekday[d.getDay()])
     }, [game])
-
-    console.log(game)
 
   return (
     <StyledDetails>
