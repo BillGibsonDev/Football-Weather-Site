@@ -9,7 +9,8 @@ export const Nav = () => {
   return (
     <StyledNav>
       <Link to="/">Football Weather</Link>
-      <h2>Week 6 - 2023</h2>
+      <h2>2023 Season</h2>
+      <h2>Week 6</h2>
     </StyledNav>
   )
 }
@@ -25,7 +26,7 @@ const StyledNav  = styled.nav`
     color: ${palette.accentColor};
   }
   h2 {
-    font-size: 2em;
+    font-size: 1em;
     font-weight: 400;
     color: ${palette.titleColor};
   }

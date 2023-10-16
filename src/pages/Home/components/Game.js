@@ -37,15 +37,17 @@ const StyledGame = styled.article`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 1px solid #fff;
+  border: 1px solid ${palette.fadedWhite};
   width: 100%;
   border-radius: 4px;
   height: auto;
   cursor: pointer;
   transition: 0.2s;
+  box-shadow: -2px 2px 2px #00000081;
   &:hover, &:focus {
-    background: black;
-    transform: scale(1.01);
+    background: #00000084;
+    transform: scale(1.005);
+    box-shadow: -2px 2px 2px ${palette.accentColor};
   }
   .game-link {
     width: 100%;
@@ -58,7 +60,8 @@ const StyledGame = styled.article`
     width: 100%;
   }
   h3 {
+    margin: 20px auto;
     text-align: center;
-    color: ${palette.labelColor};
+    color: ${palette.accentColor};
   }
 `;

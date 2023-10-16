@@ -42,13 +42,13 @@ const StyledDetails = styled.article`
     display: flex;
     flex-direction: column;
     width: 100%;
-    border-bottom: 2px solid ${palette.accentColor};
+    border-bottom: 2px solid ${palette.subtleAccentColor};
     margin-bottom: 6px;
     .teams-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        background: white;
+        background: ${palette.lessFadedWhite};
         border-top-right-radius: 2px;
         border-top-left-radius: 2px;
         margin-bottom: 6px;

@@ -42,7 +42,7 @@ const GlobalStyles = createGlobalStyle`
     body {
         border-radius: 4px;
         font-family: 'Ubuntu', sans-serif;
-        background: ${palette.backgroundColor};
+        background: ${palette.backgroundColorTransparent};
         padding: 2em 0;
         margin: 2em auto;
         min-height: 90vh;
