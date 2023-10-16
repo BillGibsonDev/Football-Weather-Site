@@ -8,8 +8,6 @@ export const GameDayWeather = ({ weather }) => {
         <h1>No Weather Yet</h1>
     }
 
-    console.log(weather)
-
     return (
         <StyledWeather>
             <div className="top-container">

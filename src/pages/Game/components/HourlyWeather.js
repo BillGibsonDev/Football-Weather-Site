@@ -7,20 +7,24 @@ export const HourlyWeather = ({ weather }) => {
     if(!weather){
         <h1>No Hourly Forecast Yet</h1>
     }
-
-    console.log(weather)
     
+    const formatToEST = (dateString) => {
+        const weatherStartTimeEDT = new Date(dateString).toLocaleString('en-US', { timeZone: 'America/New_York' });
+        const weatherTime = weatherStartTimeEDT; 
+        const splitWeatherTime = weatherTime.split(' ');
+        const weatherHourAndAbbreviation = splitWeatherTime[1].split(':');
+        let time =  `${weatherHourAndAbbreviation[0]}:${weatherHourAndAbbreviation[1]} ${splitWeatherTime[2]}`;
+
+        return time;
+    }
+
     return (
         <StyledWeather>
             {
                 weather.map((weather, key) => {
                     return (
                         <div className="weather-wrapper" key={key}>
-                            { 
-                                Number(weather.startTime.slice(11,13)) >= 12 
-                                ? <h2>{Number(weather.startTime.slice(11,13) - 12)}:{weather.startTime.slice(14,16)}pm</h2>
-                                : <h2>{Number(weather.startTime.slice(11,16))}am</h2>
-                            }
+                            <h2>{formatToEST(weather.startTime)}</h2>
                             <div className="weather-container">
                                 <div className="top-condition-container">
                                     <h4>{weather.shortForecast}</h4>
@@ -45,6 +49,11 @@ const StyledWeather = styled.article`
     align-items: center;
     flex-direction: column;
     width: 100%;
+    h1 {
+        width: 100%;
+        text-align: center;
+        color: white;
+    }
     .weather-wrapper {
         display: flex;
         align-items: center;
@@ -58,14 +67,17 @@ const StyledWeather = styled.article`
             width: 100%;
         } 
         h2 {
-            font-size: 1.2em;
+            font-size: 1em;
             font-weight: 400;
             color: #fff;
         }
         .weather-container {
             display: flex;
             justify-content: space-evenly;
-            width: 100%;
+            width: 80%;
+            @media (max-width: 450px){
+                width: 100%;
+            } 
             .top-condition-container {
                 display: flex;
                 align-items: center;
@@ -96,12 +108,11 @@ const StyledWeather = styled.article`
                 max-width: 150px;
                 margin-left: auto;
                 h6 {
-                    font-size: 1em;
+                    font-size: .9em;
                     display: flex;
                     justify-content: space-between;
                     width: auto;
-                    min-width: 50px;
-                    width: 100%;
+                    width: 80%;
                     max-width: 150px;
                     font-weight: 400;
                     color: ${palette.labelColor};

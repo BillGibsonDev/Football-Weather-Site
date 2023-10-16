@@ -72,15 +72,13 @@ const StyledWeather = styled.article`
         .bottom-condition-container {
             margin: auto;
             h6 {
-                font-size: 14px;
+                margin: 2px 0;
+                font-size: .8em;
                 display: flex;
                 justify-content: space-between;
                 min-width: 150px;
                 font-weight: 400;
                 color: ${palette.labelColor};
-                span {
-                    
-                }
                 .title {
                     margin-right: auto;
                 }
