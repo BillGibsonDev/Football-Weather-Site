@@ -42,13 +42,10 @@ const Home = ({games}) => {
 
 const StyledHome = styled.section`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   margin: auto;
   gap: 10px;
   width: 90%;
-  @media screen and (max-width:1110px) {
-    grid-template-columns: 1fr 1fr;
-  }
   @media screen and (max-width: 520px) {
     grid-template-columns: 1fr;
   }

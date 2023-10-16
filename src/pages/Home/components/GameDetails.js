@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 // styles
 import styled from "styled-components";
 import * as palette from '../../../ThemeVariables.js'
+import { formatToEST } from "../../../components/formatToEst.js";
 
 export const GameDetails = ({game}) => {
 
@@ -21,15 +22,7 @@ export const GameDetails = ({game}) => {
             <span>@</span>
             <h2>{game.HomeTeam}</h2>
         </div>
-        <div className="channel-container">
-          <h6>{game.Channel}</h6>
-          <div className="dash"></div>
-          { 
-            Number(game.DateTime.slice(11,13)) > 12 
-            ? <h6>{day} {Number(game.DateTime.slice(11,13) - 12)}:{game.DateTime.slice(14,16)}pm EST</h6>
-            : <h6>{day} {Number(game.DateTime.slice(11,13))}:{game.DateTime.slice(14,16)}am EST</h6>
-          }
-        </div>
+        <h6 className="date-channel">{day} {formatToEST(game.DateTime)} on {game.Channel}</h6>
         <div className="stadium-container">
             <h6 className="stadium-name">{game.StadiumDetails.Name}</h6>
             <div className="stadium-details-container">
@@ -45,42 +38,37 @@ export const GameDetails = ({game}) => {
   )
 }
 
-const StyledDetails = styled.div`
+const StyledDetails = styled.article`
     display: flex;
     flex-direction: column;
     width: 100%;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid ${palette.accentColor};
     margin-bottom: 6px;
     .teams-container {
         display: flex;
         justify-content: center;
         align-items: center;
+        background: white;
+        border-top-right-radius: 2px;
+        border-top-left-radius: 2px;
+        margin-bottom: 6px;
         h2 {
             font-size: 2em;
-            color: ${palette.titleColor};
+            color: ${palette.accentColor};
         }
         span {
-            color: ${palette.titleColor};
+            color: ${palette.accentColor};
             margin: 0 10px;
-            font-size: 16px;
-        }
-    }
-    .dash {
-        background: ${palette.labelColor};
-        height: 2px;
-        width: 6px;
-        margin: 6px;
-    }
-    .channel-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 8px;
-        h6 {
             font-size: 1em;
-            font-weight: 400;
-            color: ${palette.titleColor};
         }
+    }
+    .date-channel {
+        margin: 0 auto 8px auto;
+        font-size: 1em;
+        font-weight: 400;
+        color: ${palette.labelColor};
+        width: 100%;
+        text-align: center;
     }
     .stadium-container {
         display: flex;
@@ -102,7 +90,7 @@ const StyledDetails = styled.div`
             h6 {
                 font-size: 1em;
                 font-weight: 400;
-                color: ${palette.titleColor};
+                color: ${palette.labelColor};
                 margin: 6px 0 0 0;
             }
         }

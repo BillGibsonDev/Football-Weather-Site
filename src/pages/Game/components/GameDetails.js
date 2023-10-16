@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import * as palette from '../../../ThemeVariables.js';
 
+// functions
+import { formatToEST } from "../../../components/formatToEst.js";
+
 export const GameDetails = ({game}) => {
 
     const [ day, setDay ] = useState('')
@@ -21,15 +24,7 @@ export const GameDetails = ({game}) => {
             <span>@</span>
             <h2>{game.GameData.HomeTeam}</h2>
         </div>
-        <div className="channel-container">
-          <h6>{game.GameData.Channel}</h6>
-          <div className="dash">-</div>
-          { 
-            Number(game.GameData.DateTime.slice(11,13)) > 12 
-            ? <h6>{day} {Number(game.GameData.DateTime.slice(11,13) - 12)}:{game.GameData.DateTime.slice(14,16)}pm EST</h6>
-            : <h6>{day} {Number(game.GameData.DateTime.slice(11,13))}:{game.GameData.DateTime.slice(14,16)}am EST</h6>
-          }
-        </div>
+        <h6 className="date-channel">{day} {formatToEST(game.GameData.DateTime)} on {game.GameData.Channel}</h6>
         <div className="stadium-container">
             <h6 className="stadium-name">{game.GameData.StadiumDetails.Name}</h6>
             {
@@ -64,22 +59,13 @@ const StyledDetails = styled.article`
             color: ${palette.titleColor}
         }
     }
-    .channel-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 8px 0;
-        h6 {
-            font-size: 1.2em;
-            font-weight: 400;
-            color: ${palette.titleColor};
-        }
-        .dash {
-            background: ${palette.labelColor};
-            height: 2px;
-            width: 8px;
-            margin: 6px;
-        }
+    .date-channel {
+        margin: 0 auto 8px auto;
+        font-size: 1em;
+        font-weight: 400;
+        color: ${palette.labelColor};
+        width: 100%;
+        text-align: center;
     }
     .stadium-container {
         display: flex;

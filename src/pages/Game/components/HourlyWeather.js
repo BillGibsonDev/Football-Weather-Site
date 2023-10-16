@@ -2,20 +2,20 @@
 import styled from 'styled-components';
 import * as palette from '../../../ThemeVariables.js';
 
+// functions
+import { formatToEST } from '../../../components/formatToEst.js';
+
 export const HourlyWeather = ({ weather }) => {
 
     if(!weather){
-        <h1>No Hourly Forecast Yet</h1>
-    }
-    
-    const formatToEST = (dateString) => {
-        const weatherStartTimeEDT = new Date(dateString).toLocaleString('en-US', { timeZone: 'America/New_York' });
-        const weatherTime = weatherStartTimeEDT; 
-        const splitWeatherTime = weatherTime.split(' ');
-        const weatherHourAndAbbreviation = splitWeatherTime[1].split(':');
-        let time =  `${weatherHourAndAbbreviation[0]}:${weatherHourAndAbbreviation[1]} ${splitWeatherTime[2]}`;
-
-        return time;
+        return (
+            <h1 style={{
+                margin: '10px 0',
+                color: 'white', 
+                textAlign: 'center', 
+                width: '100%'
+            }}>No Hourly Forecast Yet</h1>
+        )
     }
 
     return (
@@ -49,11 +49,6 @@ const StyledWeather = styled.article`
     align-items: center;
     flex-direction: column;
     width: 100%;
-    h1 {
-        width: 100%;
-        text-align: center;
-        color: white;
-    }
     .weather-wrapper {
         display: flex;
         align-items: center;
@@ -105,7 +100,7 @@ const StyledWeather = styled.article`
                 align-items: center;
                 justify-content: flex-end;
                 width: 100%;
-                max-width: 150px;
+                max-width: 200px;
                 margin-left: auto;
                 h6 {
                     font-size: .9em;

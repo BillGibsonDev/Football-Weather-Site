@@ -37,7 +37,7 @@ const StyledGame = styled.article`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 2px solid ${palette.accentColor};
+  border: 1px solid #fff;
   width: 100%;
   border-radius: 4px;
   height: auto;
@@ -49,6 +49,8 @@ const StyledGame = styled.article`
   }
   .game-link {
     width: 100%;
+    height: 100%;
+    padding: 0;
   }
   .game {
     display: flex;

@@ -5,7 +5,14 @@ import * as palette from '../../../ThemeVariables.js';
 export const GameDayWeather = ({ weather }) => {
 
     if(!weather){
-        <h1>No Weather Yet</h1>
+        return (
+            <h1 style={{
+                margin: '10px 0',
+                color: 'white', 
+                textAlign: 'center', 
+                width: '100%'
+            }}>No Forecast Yet</h1>
+        )
     }
 
     return (
