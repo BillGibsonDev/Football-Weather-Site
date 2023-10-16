@@ -8,34 +8,34 @@ export const Weather = ({weather, game}) => {
         <StyledWeather>
             <div className="weather-wrapper">
                 {
-                    game.Stadium.State === '' || game.Stadium.State === null
-                    ? <h5 className="city">{game.Stadium.City}, {game.Stadium.Country}</h5>
-                    : <h5 className="city">{game.Stadium.City}, {game.Stadium.State}, {game.Stadium.Country}</h5>
+                    game.StadiumDetails.State === '' || game.StadiumDetails.State === null
+                    ? <h5 className="city">{game.StadiumDetails.City}, {game.StadiumDetails.Country}</h5>
+                    : <h5 className="city">{game.StadiumDetails.City}, {game.StadiumDetails.State}, {game.StadiumDetails.Country}</h5>
                 }
                 <div className="top-condition-container">
-                    <img src={weather.Icon} alt={weather.Condition} />
+                    <img src={weather.icon} alt={weather.shortForecast} />
                     <div className="icon-text-container">
-                        <h4>{weather.Condition}</h4>
-                        <h5>{Math.floor(weather.Temp)}<span>F</span></h5>
+                        <h4>{weather.shortForecast}</h4>
+                        <h5>{weather.temperature}<span>F</span></h5>
                     </div>
                 </div>
                 <div className="bottom-condition-container">
-                    <h6><span className="title">Wind</span>{Math.floor(weather.Wind)}<span className="unit">mph</span></h6>
-                    <h6><span className="title">Gusts</span>{Math.floor(weather.Gusts)}<span className="unit">mph</span></h6>
-                    <h6><span className="title">Rain</span>{Math.floor(weather.Rain)}<span className="unit">%</span></h6>
+                    <h6><span className="title">Wind</span>{weather.windSpeed}</h6>
+                    <h6><span className="title">Precipitation</span>{Math.floor(weather.probabilityOfPrecipitation.value)}<span className="unit">%</span></h6>
                 </div>
             </div>
         </StyledWeather>
     )
 }
 
-const StyledWeather = styled.div`
+const StyledWeather = styled.article`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
     .weather-wrapper {
         h5 {
-            font-size: 1.2em;
+            font-size: 1em;
             font-weight: 400;
             color: ${palette.labelColor};
         }
@@ -48,33 +48,34 @@ const StyledWeather = styled.div`
             align-items: center;
             margin: 0 auto;
             img {
-                width: 75px;
-                height: 75px;
+                width: 25px;
+                height: 25px;
+                margin-right: 6px;
+                border-radius: 50%;
             }
             .icon-text-container {
+                margin: 6px 0;
                 h4 {
-                    font-size: 1.5em;
+                    font-size: 1em;
                     color: ${palette.titleColor};
                     max-width: 250px;
+                    display: flex;
+                    flex-wrap: wrap;
                 }
                 h5 {
-                    font-size: 1.2em;
+                    font-size: 1em;
                     font-weight: 400;
                     color: ${palette.titleColor};
                 }
             }
         }
         .bottom-condition-container {
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            align-items: center;
-            justify-content: center;
+            margin: auto;
             h6 {
-                font-size: 1em;
+                font-size: 14px;
                 display: flex;
                 justify-content: space-between;
-                width: 150px;
+                min-width: 150px;
                 font-weight: 400;
                 color: ${palette.labelColor};
                 span {

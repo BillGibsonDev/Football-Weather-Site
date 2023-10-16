@@ -13,20 +13,21 @@ export const Game = ({game}) => {
 
   return (
     <StyledGame>
-      <GameDetails
-        game={game}
-      />
-      {
-        !game.Weather[0] || game.Weather.length < 2
-        ? <h3>No Forecast Yet</h3>
-        : <>
-            <Weather
-              game={game}
-              weather={game.Weather[0]}
-            />
-            <Link to={`/games/${game.ScoreID}`} className="game-link">More Info</Link>
-          </>
+      <Link to={`/games/${game.GameData.ScoreID}`} className="game-link">
+        <GameDetails
+          game={game.GameData}
+        />
+        {
+          !game.GameDayWeather
+          ? <h3>No Forecast Yet</h3>
+          : <>
+              <Weather
+                game={game.GameData}
+                weather={game.GameDayWeather}
+              />
+            </>
         }
+      </Link>
     </StyledGame>
   );
 }
@@ -37,25 +38,22 @@ const StyledGame = styled.article`
   justify-content: center;
   flex-direction: column;
   border: 2px solid ${palette.accentColor};
-  margin: 20px 0;
-  padding: 12px;
   width: 100%;
+  border-radius: 4px;
+  height: auto;
+  cursor: pointer;
+  transition: 0.2s;
+  &:hover, &:focus {
+    background: black;
+    transform: scale(1.01);
+  }
+  .game-link {
+    width: 100%;
+  }
   .game {
     display: flex;
     flex-direction: column;
     width: 100%;
-  }
-  .game-link {
-    font-size: 1.2em;
-    margin-top: 6px;
-  }
-  a {
-    text-align: center;
-    color: ${palette.accentColor2};
-    font-weight: 700;
-    &:hover {
-      text-decoration: underline;
-    }
   }
   h3 {
     text-align: center;

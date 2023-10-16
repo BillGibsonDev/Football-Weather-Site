@@ -14,6 +14,8 @@ export const GameDetails = ({game}) => {
         setDay(weekday[d.getDay()])
     }, [game])
 
+    console.log(game)
+
   return (
     <StyledDetails>
         <div className="teams-container">
@@ -31,15 +33,14 @@ export const GameDetails = ({game}) => {
           }
         </div>
         <div className="stadium-container">
-            <h6 className="stadium-name">{game.Stadium.Name}</h6>
+            <h6 className="stadium-name">{game.StadiumDetails.Name}</h6>
             <div className="stadium-details-container">
                 {
-                    game.Stadium.Type === "RetractableDome"
+                    game.StadiumDetails.Type === "RetractableDome"
                     ? <h6>Retractable Dome</h6>
-                    : <h6>{game.Stadium.Type}</h6>
+                    : <h6>{game.StadiumDetails.Type}</h6>
                 }
-                <div className="dash"></div>
-                <h6>{game.Stadium.Surface}</h6>
+                <h6>{game.StadiumDetails.PlayingSurface}</h6>
             </div>
         </div>
     </StyledDetails>
@@ -67,7 +68,7 @@ const StyledDetails = styled.div`
         }
     }
     .dash {
-        background: black;
+        background: ${palette.labelColor};
         height: 2px;
         width: 6px;
         margin: 6px;
@@ -100,12 +101,11 @@ const StyledDetails = styled.div`
             color: ${palette.titleColor};
         }
         .stadium-details-container {
-            display: flex;
-            align-items: center;
             h6 {
                 font-size: 1em;
                 font-weight: 400;
                 color: ${palette.titleColor};
+                margin: 6px 0 0 0;
             }
         }
     }

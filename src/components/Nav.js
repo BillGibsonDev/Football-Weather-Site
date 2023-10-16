@@ -9,8 +9,7 @@ export const Nav = () => {
   return (
     <StyledNav>
       <Link to="/">Football Weather</Link>
-      <h2>Thank you!</h2>
-      <h3>See You Next Season</h3>
+      <h2>Week 6 - 2023</h2>
     </StyledNav>
   )
 }
@@ -19,7 +18,7 @@ const StyledNav  = styled.nav`
   display: flex;
   flex-direction: column;
   width: 90%;
-  margin: auto;
+  margin: 0 auto 20px auto;
   text-align: center;
   a {
     font-size: 2.5em;

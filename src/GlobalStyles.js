@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
         scroll-behavior: smooth;
         font-family: 'Ubuntu', sans-serif;
         letter-spacing: 1px;
-        background: ${palette.backgroundColor};
+        background: #1b1b1b;
         max-width: 1000px;
         margin: auto;
         @media (max-width: 750px){
@@ -22,7 +22,11 @@ const GlobalStyles = createGlobalStyle`
         } 
     }
     body {
+        border-radius: 4px;
         font-family: 'Ubuntu', sans-serif;
+        background: ${palette.backgroundColor};
+        padding: 2em 0;
+        margin: 1em;
     }
     ul {
         list-style-type: none;

@@ -18,42 +18,39 @@ const Home = ({games}) => {
     dispatch(getGames());
   }, [dispatch])
 
+  if(!games) {
+    return (
+      <Loader />
+    )
+  }
+
   return (
     <StyledHome>
-      <div className="games-wrapper">
-        {
-          !games
-          ? <Loader />
-          : <>
-            {
-              games.filter(game => game.AwayTeam !== 'BYE').filter(game => game.Status === "Scheduled" || game.Status === 'InProgress').map((game, key) => {
-                return (
-                  <Game
-                    game={game}
-                    key={key}
-                  />
-                )
-              })
-            }
-          </>
-        }
-        </div>
+      {
+        games.map((game, index) => {
+          return (
+            <Game
+              game={game}
+              key={index}
+            />
+          )
+        })
+      }
     </StyledHome>
   );
 }
 
-const StyledHome = styled.div`
-  .games-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin: auto;
-    @media screen and (max-width:1110px) {
-      grid-template-columns: 1fr 1fr;
-    }
-    @media screen and (max-width: 520px) {
-      grid-template-columns: 1fr;
-      width: 90%;
-    }
+const StyledHome = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: auto;
+  gap: 10px;
+  width: 90%;
+  @media screen and (max-width:1110px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (max-width: 520px) {
+    grid-template-columns: 1fr;
   }
 `;
 
