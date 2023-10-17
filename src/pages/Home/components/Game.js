@@ -48,7 +48,7 @@ const StyledGame = styled.article`
   background: #00000084;
   &:hover, &:focus {
     transform: scale(1.005);
-    box-shadow: -10px 6px 2px ${palette.backgroundColor};
+    box-shadow: -4px 2px 0 ${palette.fadedWhite};
   }
   .game-link {
     width: 100%;
@@ -59,7 +59,7 @@ const StyledGame = styled.article`
     text-align: center;
     width: 100%;
     padding: 10px 0;
-    background: ${palette.accentColor};
+    /* background: ${palette.accentColor}; */
     color: white;
     border-radius: 0;
     border-bottom-left-radius: 3px;
@@ -67,6 +67,7 @@ const StyledGame = styled.article`
     transition: 0.2s;
     font-weight: ${palette.titleWeight};
     display: inline-block;
+    text-shadow: .5px .5px ${palette.accentColor2};
     &:hover, &:focus {
       text-decoration: underline;
     }

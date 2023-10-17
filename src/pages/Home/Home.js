@@ -24,10 +24,19 @@ const Home = ({games}) => {
     )
   }
 
+  const sortGamesByTime = (arr) => {
+  arr.sort((a, b) => {
+    let timeA = new Date(`${a.GameData.Date}`);
+    let timeB = new Date(`${b.GameData.Date}`);
+    return timeA - timeB;
+  })
+  return arr;
+}
+
   return (
     <StyledHome>
       {
-        games.map((game, index) => {
+        sortGamesByTime(games).map((game, index) => {
           return (
             <Game
               game={game}

@@ -4,6 +4,7 @@ import GlobalStyles from "./GlobalStyles";
 // pages
 import Home from "./pages/Home/Home";
 import Game from "./pages/Game/Game";
+import { UnknownPath } from "./pages/404Page";
 
 // components
 import { Nav } from "./components/Nav";
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path='/' exact element={<Home />} /> 
         <Route path="/games/:scoreId" element={<Game />} />
+        <Route path="*" element={<UnknownPath /> }  />
       </Routes>
     </>
   );

@@ -24,7 +24,7 @@ export const HourlyWeather = ({ weather }) => {
                 weather.map((weather, key) => {
                     return (
                         <div className="weather-wrapper" key={key}>
-                            <h2>{formatToEST(weather.startTime)}</h2>
+                            <h4 className='time'>{formatToEST(weather.startTime)}</h4>
                             <div className="weather-container">
                                 <div className="top-condition-container">
                                     <h4>{weather.shortForecast}</h4>
@@ -49,21 +49,21 @@ const StyledWeather = styled.article`
     align-items: center;
     flex-direction: column;
     width: 100%;
+    max-width: 600px;
     .weather-wrapper {
         display: flex;
         align-items: center;
         margin-bottom: 10px;
-        width: 90%;
+        width: 100%;
         max-width: 600px;
         padding: 10px;
-        border: 2px solid ${palette.accentColor};
-        @media (max-width: 750px){
-            padding: 10px;
-            width: 100%;
-        } 
-        h2 {
-            font-size: ${palette.labelSize};
-            font-weight: 400;
+        border: 1px solid ${palette.fadedWhite};
+        box-shadow: -2px 2px 2px black;
+        border-radius: 4px;
+        background-color: ${palette.backgroundColorTransparent};
+        .time {
+            font-size: ${palette.smallTextSize};
+            font-weight: ${palette.labelWeight};
             color: #fff;
         }
         .weather-container {
@@ -103,7 +103,7 @@ const StyledWeather = styled.article`
                 max-width: 200px;
                 margin-left: auto;
                 h6 {
-                    font-size: .9em;
+                    font-size: ${palette.smallTextSize};
                     display: flex;
                     justify-content: space-between;
                     width: auto;

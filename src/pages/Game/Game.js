@@ -26,7 +26,6 @@ const Game = ({ games }) => {
     dispatch(getGames());
   }, [ dispatch ])
 
-
   if(!games){
     return (
       <Loader />
@@ -43,7 +42,9 @@ const Game = ({ games }) => {
         ? <h5 className="city">{game.GameData.StadiumDetails.City}, {game.GameData.StadiumDetails.Country}</h5>
         : <h5 className="city">{game.GameData.StadiumDetails.City}, {game.GameData.StadiumDetails.State}, {game.GameData.StadiumDetails.Country}</h5>
       }
+      <h3>Game Day Forecast</h3>
       <GameDayWeather  weather={game.GameDayWeather} />
+      <h3>Hourly Forecast</h3>
       <HourlyWeather weather={game.HourlyWeather} />
     </StyledGame>
   )
@@ -62,13 +63,24 @@ const StyledGame = styled.section`
     width: 100%;
     text-align: center;
   }
+  h3 {
+    color: ${palette.titleColor};
+    font-size: ${palette.subtitleSize};
+    font-weight: ${palette.titleWeight};
+    text-align: left;
+    width: 100%;
+    margin: auto;
+    max-width: 600px;
+  }
   h5 {
     font-size: ${palette.subtitleSize};
   }
   .city {
     text-align: center;
-    color: ${palette.titleColor};
-    margin-bottom: 6px;
+    color: ${palette.accentColor};
+    text-shadow: 1px 1px black;
+    margin: 20px auto 6px auto;
+    font-size: ${palette.titleSize};
   }
 `;
 

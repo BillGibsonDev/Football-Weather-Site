@@ -8,9 +8,9 @@ import * as palette from '../ThemeVariables.js';
 export const Nav = () => {
   return (
     <StyledNav>
-      <Link to="/">Football Weather</Link>
+      <Link to="/">Football Forecast</Link>
       <h2>2023 Season</h2>
-      <h2>Week 6</h2>
+      <h2>Week 7</h2>
     </StyledNav>
   )
 }
@@ -25,6 +25,7 @@ const StyledNav  = styled.nav`
     font-size: 2.5em;
     color: ${palette.accentColor};
     font-weight: ${palette.titleWeight};
+    text-shadow: 1px 1px black;
   }
   h2 {
     font-size: ${palette.labelSize};

@@ -62,6 +62,24 @@ const GlobalStyles = createGlobalStyle`
         padding: 2px;
         border-radius: 4px;
     }
+    a {
+        padding: 0;
+    }
+    h4 {
+        font-size: 1.2em;
+        color: ${palette.titleColor};
+        font-weight: ${palette.titleWeight};
+    }
+    h5 {
+        font-size: 1em;
+        color: ${palette.titleColor};
+        font-weight: ${palette.titleWeight};
+    }
+    h6 {
+        color: ${palette.titleColor};
+        font-size: .9em;
+        font-weight: 400;
+    }
 `;
 
 export default GlobalStyles;

@@ -42,21 +42,26 @@ const StyledDetails = styled.article`
     display: flex;
     flex-direction: column;
     width: 100%;
-    border-bottom: 1px solid black;
+    max-width: 600px;
+    border: 1px solid ${palette.fadedWhite};
+    box-shadow: -2px 2px 2px black;
     margin: 10px 0;
+    border-radius: 4px;
+    background-color: ${palette.backgroundColorTransparent};
     .teams-container {
         display: flex;
         justify-content: center;
         align-items: center;
         h2 {
             font-size: ${palette.titleSize};
-            color: ${palette.titleColor};
+            color: ${palette.accentColor};
             font-weight: ${palette.titleWeight};
+            text-shadow: 1px 1px black;
         }
         span {
+            color: ${palette.accentColor};
             margin: 0 10px;
             font-size: 1em;
-            color: ${palette.titleColor}
         }
     }
     .date-channel {

@@ -42,6 +42,9 @@ const StyledWeather = styled.article`
     max-width: 600px;
     margin-bottom: 20px;
     border: 1px solid ${palette.fadedWhite};
+    box-shadow: -2px 2px 2px black;
+    border-radius: 4px;
+    background-color: ${palette.backgroundColorTransparent};
     padding: 10px;
     @media (max-width: 750px){
         flex-direction: column;
@@ -76,8 +79,8 @@ const StyledWeather = styled.article`
             }
             h6 {
                 color: ${palette.titleColor};
-                font-size: .9em;
-                font-weight: 400;
+                font-size: .8em;
+                font-weight: ${palette.labelWeight};
                 display: flex;
                 justify-content: space-between;
                 width: 150px;
@@ -89,7 +92,6 @@ const StyledWeather = styled.article`
         flex-direction: column;
         width: 50%;
         max-width: 600px;
-        margin-bottom: auto;
         @media (max-width: 750px){
             width: 100%;
             margin-top: 20px;
@@ -100,7 +102,7 @@ const StyledWeather = styled.article`
             font-weight: ${palette.titleWeight};
         }
         p {
-            font-size: .9em;
+            font-size: .8em;
             color: ${palette.labelColor};
             width: 100%;
         }

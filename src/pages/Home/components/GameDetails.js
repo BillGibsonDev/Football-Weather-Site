@@ -91,7 +91,6 @@ const StyledDetails = styled.article`
                 font-size: ${palette.labelSize};
                 font-weight: ${palette.labelWeight};;
                 color: ${palette.labelColor};
-                margin: 6px 0 0 0;
             }
         }
     }
