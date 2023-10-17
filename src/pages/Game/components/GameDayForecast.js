@@ -27,7 +27,7 @@ export const GameDayWeather = ({ weather }) => {
                 </div>
             </div>
             <div className="bottom-container">
-                <h5>Forecast</h5>
+                <h4>Forecast</h4>
                 <p>{weather.detailedForecast}</p>
             </div>
         </StyledWeather>
@@ -38,14 +38,22 @@ const StyledWeather = styled.article`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-direction: column;
     width: 100%;
     max-width: 600px;
     margin-bottom: 20px;
+    border: 1px solid ${palette.fadedWhite};
+    padding: 10px;
+    @media (max-width: 750px){
+        flex-direction: column;
+    } 
     .top-container {
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 50%;
+        @media (max-width: 750px){
+            width: 100%;
+        } 
         img {
             width: 75px;
             height: 75px;
@@ -57,17 +65,18 @@ const StyledWeather = styled.article`
                 margin-right: auto;
             }
             h4 {
-                font-size: 1.4em;
+                font-size: 1.2em;
                 color: white;
+                font-weight: ${palette.titleWeight};
             }
             h5 {
                 font-size: 1em;
                 color: ${palette.titleColor};
-                font-weight: 400;
+                font-weight: ${palette.titleWeight};
             }
             h6 {
                 color: ${palette.titleColor};
-                font-size: 1em;
+                font-size: .9em;
                 font-weight: 400;
                 display: flex;
                 justify-content: space-between;
@@ -76,13 +85,22 @@ const StyledWeather = styled.article`
         }
     }
     .bottom-container {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
         max-width: 600px;
-        margin-top: 20px;
-        h5 {
+        margin-bottom: auto;
+        @media (max-width: 750px){
+            width: 100%;
+            margin-top: 20px;
+        } 
+        h4 {
+            font-size: 1.2em;
             color: white;
+            font-weight: ${palette.titleWeight};
         }
         p {
-            font-size: 1em;
+            font-size: .9em;
             color: ${palette.labelColor};
             width: 100%;
         }

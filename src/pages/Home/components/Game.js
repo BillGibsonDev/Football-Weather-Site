@@ -28,6 +28,7 @@ export const Game = ({game}) => {
             </>
         }
       </Link>
+      <Link to={`/games/${game.GameData.ScoreID}`} className="text-game-link">Full Forecast</Link>
     </StyledGame>
   );
 }
@@ -44,15 +45,31 @@ const StyledGame = styled.article`
   cursor: pointer;
   transition: 0.2s;
   box-shadow: -2px 2px 2px #00000081;
+  background: #00000084;
   &:hover, &:focus {
-    background: #00000084;
     transform: scale(1.005);
-    box-shadow: -2px 2px 2px ${palette.accentColor};
+    box-shadow: -10px 6px 2px ${palette.backgroundColor};
   }
   .game-link {
     width: 100%;
     height: 100%;
     padding: 0;
+  }
+  .text-game-link {
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+    background: ${palette.accentColor};
+    color: white;
+    border-radius: 0;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    transition: 0.2s;
+    font-weight: ${palette.titleWeight};
+    display: inline-block;
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
   }
   .game {
     display: flex;

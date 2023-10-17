@@ -63,12 +63,12 @@ const StyledGame = styled.section`
     text-align: center;
   }
   h5 {
-    font-size: 1.2em;
+    font-size: ${palette.subtitleSize};
   }
   .city {
     text-align: center;
     color: ${palette.titleColor};
-    margin-bottom: 20px;
+    margin-bottom: 6px;
   }
 `;
 

@@ -62,7 +62,7 @@ const StyledWeather = styled.article`
             width: 100%;
         } 
         h2 {
-            font-size: 1em;
+            font-size: ${palette.labelSize};
             font-weight: 400;
             color: #fff;
         }
@@ -83,13 +83,13 @@ const StyledWeather = styled.article`
                     border-radius: 50%;
                 }
                 h4 {
-                    font-size: 1.2em;
+                    font-size: ${palette.subtitleSize};
                     color: ${palette.titleColor};
                     margin: 0 10px;
                 }
                 h5 {
                     color: ${palette.titleColor};
-                    font-size: 1em;
+                    font-size: ${palette.labelSize};
                     font-weight: 400;
                 }
             }

@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
     }
     html {
         scroll-behavior: smooth;
-        font-family: 'Ubuntu', sans-serif;
+        font-family: 'Nunito', sans-serif;
         letter-spacing: 1px;
         background-color:#000000;
         position: relative;
@@ -41,7 +41,7 @@ const GlobalStyles = createGlobalStyle`
     }
     body {
         border-radius: 4px;
-        font-family: 'Ubuntu', sans-serif;
+        font-family: 'Nunito', sans-serif;
         background: ${palette.backgroundColorTransparent};
         padding: 2em 0;
         margin: 2em auto;
@@ -57,7 +57,7 @@ const GlobalStyles = createGlobalStyle`
         text-decoration: none;
     }
     button, a, label, input, textarea {
-        font-family: 'Ubuntu', sans-serif;
+        font-family: 'Nunito', sans-serif;
         letter-spacing: 1px;
         padding: 2px;
         border-radius: 4px;

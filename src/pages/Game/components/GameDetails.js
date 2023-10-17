@@ -43,25 +43,25 @@ const StyledDetails = styled.article`
     flex-direction: column;
     width: 100%;
     border-bottom: 1px solid black;
-    margin: 20px 0;
-    padding-bottom: 20px;
+    margin: 10px 0;
     .teams-container {
         display: flex;
         justify-content: center;
         align-items: center;
         h2 {
-            font-size: 2em;
-            color: ${palette.titleColor}
+            font-size: ${palette.titleSize};
+            color: ${palette.titleColor};
+            font-weight: ${palette.titleWeight};
         }
         span {
             margin: 0 10px;
-            font-size: 16px;
+            font-size: 1em;
             color: ${palette.titleColor}
         }
     }
     .date-channel {
         margin: 0 auto 8px auto;
-        font-size: 1em;
+        font-size: ${palette.labelSize};
         font-weight: 400;
         color: ${palette.labelColor};
         width: 100%;
@@ -73,14 +73,15 @@ const StyledDetails = styled.article`
         align-items: center;
         text-align: center;
         justify-content: center;
-        margin: 10px 0;
+        margin: 10px 0 20px 0;
         h6 {
-            font-size: 1.2em;
+            font-size: ${palette.labelSize};
             font-weight: 400;
             color: ${palette.labelColor};
         }
         .stadium-name {
-            font-weight: 700;
+            font-size: ${palette.subtitleSize};
+            font-weight: ${palette.titleWeight};
             color: ${palette.titleColor};
         }
     }

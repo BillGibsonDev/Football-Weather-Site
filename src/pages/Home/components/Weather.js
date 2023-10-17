@@ -35,12 +35,14 @@ const StyledWeather = styled.article`
     margin-bottom: 10px;
     .weather-wrapper {
         h5 {
-            font-size: 1em;
-            font-weight: 400;
+            font-size: ${palette.labelSize};
+            font-weight: ${palette.labelWeight};
             color: ${palette.labelColor};
         }
         .city {
             text-align: center;
+            color: white;
+            font-weight: ${palette.titleWeight};
         }
         .top-condition-container {
             display: flex;
@@ -56,16 +58,17 @@ const StyledWeather = styled.article`
             .icon-text-container {
                 margin: 6px 0;
                 h4 {
-                    font-size: 1em;
-                    color: ${palette.titleColor};
+                    font-size: ${palette.labelSize};
+                    color: ${palette.labelColor};
                     max-width: 250px;
                     display: flex;
                     flex-wrap: wrap;
+                    font-weight: ${palette.titleWeight};
                 }
                 h5 {
-                    font-size: 1em;
-                    font-weight: 400;
-                    color: ${palette.titleColor};
+                    font-size: ${palette.labelSize};
+                    font-weight: ${palette.titleWeight};
+                    color: ${palette.labelColor};
                 }
             }
         }
@@ -73,11 +76,11 @@ const StyledWeather = styled.article`
             margin: auto;
             h6 {
                 margin: 2px 0;
-                font-size: .8em;
+                font-size: ${palette.smallTextSize};
                 display: flex;
                 justify-content: space-between;
                 min-width: 150px;
-                font-weight: 400;
+                font-weight: ${palette.labelWeight};
                 color: ${palette.labelColor};
                 .title {
                     margin-right: auto;

@@ -24,15 +24,11 @@ const StyledNav  = styled.nav`
   a {
     font-size: 2.5em;
     color: ${palette.accentColor};
+    font-weight: ${palette.titleWeight};
   }
   h2 {
-    font-size: 1em;
+    font-size: ${palette.labelSize};
     font-weight: 400;
     color: ${palette.titleColor};
-  }
-  h3 {
-    font-size: 1.5em;
-    font-weight: 400;
-    color: ${palette.helperGrey};
   }
 `;
