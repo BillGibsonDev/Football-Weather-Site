@@ -16,6 +16,7 @@ import { GameDayWeather } from "./components/GameDayForecast.js";
 import { connect, useDispatch } from 'react-redux';
 import { getGames } from "../../redux/actions/games.js";
 import { Loader } from "../../components/Loader.js";
+import { HelmetComponent } from "../../components/HelmetComponent.js";
 
 const Game = ({ games }) => {
 
@@ -36,9 +37,10 @@ const Game = ({ games }) => {
 
   return (
     <StyledGame>
+      <HelmetComponent game={game.GameData} />
       <GameDetails game={game} />
       {
-        game.GameData.StadiumDetails.State === '' || game.GameData.StadiumDetails.State === null
+        !game.GameData.StadiumDetails.State
         ? <h5 className="city">{game.GameData.StadiumDetails.City}, {game.GameData.StadiumDetails.Country}</h5>
         : <h5 className="city">{game.GameData.StadiumDetails.City}, {game.GameData.StadiumDetails.State}, {game.GameData.StadiumDetails.Country}</h5>
       }
@@ -67,7 +69,7 @@ const StyledGame = styled.section`
     color: ${palette.titleColor};
     font-size: ${palette.subtitleSize};
     font-weight: ${palette.titleWeight};
-    text-align: left;
+    text-align: center;
     width: 100%;
     margin: auto;
     max-width: 600px;

@@ -13,7 +13,9 @@ export const Weather = ({weather, game}) => {
                     : <h5 className="city">{game.StadiumDetails.City}, {game.StadiumDetails.State}, {game.StadiumDetails.Country}</h5>
                 }
                 <div className="top-condition-container">
-                    <img src={weather.icon} alt={weather.shortForecast} />
+                    <div className="icon-container">
+                        <img src={weather.icon} alt={weather.shortForecast} />
+                    </div>
                     <div className="icon-text-container">
                         <h4>{weather.shortForecast}</h4>
                         <h5>{weather.temperature}<span>F</span></h5>
@@ -49,21 +51,29 @@ const StyledWeather = styled.article`
             justify-content: center;
             align-items: center;
             margin: 0 auto;
-            img {
-                width: 25px;
-                height: 25px;
-                margin-right: 6px;
-                border-radius: 50%;
+            .icon-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                max-width: 100px;
+                width: 30%;
+                img {
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                }
             }
             .icon-text-container {
                 margin: 6px 0;
+                max-width: 250px;
+                width: 70%;
                 h4 {
                     font-size: ${palette.labelSize};
                     color: ${palette.labelColor};
-                    max-width: 250px;
                     display: flex;
-                    flex-wrap: wrap;
                     font-weight: ${palette.titleWeight};
+                    width: 100%;
+                    max-width: 250px;
                 }
                 h5 {
                     font-size: ${palette.labelSize};
