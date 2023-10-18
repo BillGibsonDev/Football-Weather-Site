@@ -68,18 +68,18 @@ const StyledWeather = styled.article`
                 margin-right: auto;
             }
             h4 {
-                font-size: 1.2em;
+                font-size: ${palette.subtitleSize};
                 color: white;
                 font-weight: ${palette.titleWeight};
             }
             h5 {
-                font-size: 1em;
+                font-size: ${palette.labelSize};
                 color: ${palette.titleColor};
                 font-weight: ${palette.titleWeight};
             }
             h6 {
                 color: ${palette.titleColor};
-                font-size: .8em;
+                font-size: ${palette.smallTextSize};
                 font-weight: ${palette.labelWeight};
                 display: flex;
                 justify-content: space-between;

@@ -53,8 +53,11 @@ const StyledDetails = styled.article`
         border-top-left-radius: 3px;
         margin-bottom: 6px;
         h2 {
-            font-size: ${palette.titleSize};
+            font-size: 1.5em;
             color: ${palette.accentColor};
+            font-weight: 400;
+            font-family: sans-serif;
+            padding: 4px 0;
         }
         span {
             color: ${palette.accentColor};

@@ -13,19 +13,11 @@ const GlobalStyles = createGlobalStyle`
         font-family: 'Nunito', sans-serif;
         letter-spacing: 1px;
         background-color:#000000;
-        position: relative;
         width: 100%;
         margin: auto;
-        min-height: 100vh;
-        @media (max-width: 750px){
-            font-size: 90%;
-        } 
-        @media (max-width: 450px){
-            font-size: 80%;
-        } 
         &:before {
             content: "";
-            position: absolute;
+            position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -33,16 +25,28 @@ const GlobalStyles = createGlobalStyle`
             max-width: 1000px;
             height: 100%;
             background: url(${Background});
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             background-size: cover;
             background-position: center;
             opacity: 0.35;
             z-index: -1; 
         }
+        @media (max-width: 750px){
+            font-size: 90%;
+        } 
+        @media (max-width: 450px){
+            font-size: 80%;
+        } 
     }
     body {
         border-radius: 4px;
         font-family: 'Nunito', sans-serif;
         background: ${palette.backgroundColorTransparent};
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
         padding: 2em 0;
         margin: 2em auto;
         min-height: 90vh;
