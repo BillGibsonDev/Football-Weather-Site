@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet';
-import { FieldImage } from '../assets/compressFieldImage.jpg';
+import FieldImage from '../assets/compressFieldImage.jpg';
 
 export const HelmetComponent = ({ game }) => {
 
