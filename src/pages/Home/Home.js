@@ -9,6 +9,7 @@ import { Loader } from '../../components/Loader';
 // redux
 import { connect, useDispatch } from 'react-redux';
 import { getGames } from '../../redux/actions/games.js';
+import { HelmetComponent } from "../../components/HelmetComponent";
 
 const Home = ({games}) => {
 
@@ -35,6 +36,7 @@ const Home = ({games}) => {
 
   return (
     <StyledHome>
+      <HelmetComponent game={games[0].GameData} home={true} />
       {
         sortGamesByTime(games).map((game, index) => {
           return (
