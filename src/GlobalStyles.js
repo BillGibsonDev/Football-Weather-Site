@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import * as palette from './ThemeVariables.js';
-import Background from './assets/patrick-ogilvie-GB9XKDZWwp0-unsplash.jpg'
+import Background from './assets/backgroundFieldImage.jpg';
 
 const GlobalStyles = createGlobalStyle`
     * {
