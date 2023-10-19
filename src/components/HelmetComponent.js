@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet';
+import { FieldImage } from '../assets/compressFieldImage.jpg';
 
 export const HelmetComponent = ({ game }) => {
 
@@ -8,7 +9,7 @@ export const HelmetComponent = ({ game }) => {
       <meta name="description" content={`Week ${game.Week} - ${game.AwayTeam} @ ${game.HomeTeam} Forecast`} />
       <meta property="og:title" content={`Week ${game.Week} - ${game.AwayTeam} @ ${game.HomeTeam} Forecast | 4Cast4Football`} />
       <meta property="og:description" content={`Week ${game.Week} - ${game.AwayTeam} @ ${game.HomeTeam} Forecast`} />
-      <meta property="og:image" content="../src/assets/patrick-ogilvie-GB9XKDZWwp0-unsplash(1).jpg" />
+      <meta property="og:image" content={FieldImage} />
       <meta property="og:url" content="https://www.4cast4football.com" />
       <meta property="og:type" content="website" />
       {/* Twitter Tags */}
@@ -17,7 +18,7 @@ export const HelmetComponent = ({ game }) => {
       <meta name="twitter:creator" content="@4Cast4Football" />
       <meta name="twitter:title" content={`Week ${game.Week} - ${game.AwayTeam} @ ${game.HomeTeam} Forecast`} />
       <meta name="twitter:description" content={`Week ${game.Week} - ${game.AwayTeam} @ ${game.HomeTeam} Forecast`} />
-      <meta name="twitter:image" content="../src/assets/patrick-ogilvie-GB9XKDZWwp0-unsplash(1).jpg" />
+      <meta name="twitter:image" content={FieldImage} />
     </Helmet>
   );
 }
