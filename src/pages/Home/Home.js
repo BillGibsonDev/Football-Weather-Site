@@ -36,7 +36,7 @@ const Home = ({games}) => {
 
   return (
     <StyledHome>
-      <HelmetComponent game={games[0].GameData} home={true} />
+      <HelmetComponent game={games[0]? games[0].GameData : '' } home={true} />
       {
         sortGamesByTime(games).map((game, index) => {
           return (
