@@ -10,7 +10,7 @@ export const Nav = () => {
     <StyledNav>
       <Link to="/">Football Forecast</Link>
       <h2>2023 Season</h2>
-      <h2>Week 17</h2>
+      <h2>Week 18</h2>
     </StyledNav>
   )
 }

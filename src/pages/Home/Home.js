@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 
 // components
-// import { Game } from './components/Game';
+import { Game } from './components/Game';
 import { Loader } from '../../components/Loader';
 
 // redux
@@ -25,20 +25,19 @@ const Home = ({games}) => {
     )
   }
 
-//   const sortGamesByTime = (arr) => {
-//   arr.sort((a, b) => {
-//     let timeA = new Date(`${a.GameData.Date}`);
-//     let timeB = new Date(`${b.GameData.Date}`);
-//     return timeA - timeB;
-//   })
-//   return arr;
-// }
+  const sortGamesByTime = (arr) => {
+    arr.sort((a, b) => {
+      let timeA = new Date(`${a.GameData.Date}`);
+      let timeB = new Date(`${b.GameData.Date}`);
+      return timeA - timeB;
+    })
+    return arr;
+  }
 
   return (
     <StyledHome>
       <HelmetComponent game={games[0]? games[0].GameData : '' } home={true} />
-      <h1>Sorry, we are experiencing an outage with one of the data sources that is out of my control. I'll have the site back to normal ASAP</h1>
-      {/* {
+      {
         sortGamesByTime(games).map((game, index) => {
           return (
             <Game
@@ -47,14 +46,14 @@ const Home = ({games}) => {
             />
           )
         })
-      } */}
+      }
     </StyledHome>
   );
 }
 
 const StyledHome = styled.section`
-  /* display: grid;
-  grid-template-columns: 1fr 1fr; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   margin: auto;
   gap: 10px;
   width: 90%;
