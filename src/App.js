@@ -11,6 +11,7 @@ import { Nav } from "./components/Nav";
 
 // router
 import { Route, Routes } from 'react-router-dom';
+import Offseason from "./pages/Offseason";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path='/' exact element={<Home />} /> 
         <Route path="/games/:scoreId" element={<Game />} />
+        <Route path="/offseason" element={<Offseason />} />
         <Route path="*" element={<UnknownPath /> }  />
       </Routes>
     </>

@@ -84,6 +84,21 @@ const GlobalStyles = createGlobalStyle`
         font-size: .9em;
         font-weight: 400;
     }
+    .offseason-btn {
+        display: block;
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        margin: 20px auto;
+        padding: 10px 40px;
+        color: black;
+        background: white;
+        transition: 0.2s;
+        &:hover {
+            color: white;
+            background: black;
+        }
+    }
 `;
 
 export default GlobalStyles;

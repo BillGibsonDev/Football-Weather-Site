@@ -1,10 +1,12 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+
 // styles
 import styled from "styled-components";
 
 // components
 import { Game } from './components/Game';
-import { Loader } from '../../components/Loader';
+// import { Loader } from '../../components/Loader';
 
 // redux
 import { connect, useDispatch } from 'react-redux';
@@ -17,11 +19,16 @@ const Home = ({games}) => {
 
   useEffect(() => {
     dispatch(getGames());
-  }, [dispatch])
+  }, [ dispatch ])
 
-  if(!games) {
+  if(!games || games) {
     return (
-      <Loader />
+      // <Loader />
+      <>
+        <h1 style={{textAlign: 'center', color: 'white'}}>Thanks for a great season! See you next year!</h1>
+        <Link className="offseason-btn" to={'/offseason'}>I'm here for the demo.</Link>
+      </>
+      
     )
   }
 
