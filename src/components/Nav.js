@@ -9,8 +9,7 @@ export const Nav = () => {
   return (
     <StyledNav>
       <Link to="/">Football Forecast</Link>
-      <h2>2023 Season</h2>
-      <h2>Championship Round</h2>
+      <h2>2024 Preseason</h2>
     </StyledNav>
   )
 }
