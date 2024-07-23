@@ -7,7 +7,7 @@ import Game from "./pages/Game/Game";
 import { UnknownPath } from "./pages/404Page";
 
 // components
-import { Nav } from "./components/Nav";
+import Nav from "./components/Nav";
 
 // router
 import { Route, Routes } from 'react-router-dom';

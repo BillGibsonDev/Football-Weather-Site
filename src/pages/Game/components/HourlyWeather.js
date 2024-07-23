@@ -9,17 +9,23 @@ export const HourlyWeather = ({ weather }) => {
 
     if(!weather){
         return (
-            <h1 style={{
-                margin: '10px 0',
-                color: 'white', 
-                textAlign: 'center', 
-                width: '100%'
-            }}>No Hourly Forecast Yet</h1>
+            <StyledWeather>
+                <h3>Hourly</h3>
+                <div className="weather-wrapper">
+                    <h1 style={{
+                        margin: '50px 0',
+                        color: 'white', 
+                        textAlign: 'center', 
+                        width: '100%'
+                    }}>No Hourly Forecast Yet</h1>
+                </div>
+            </StyledWeather>
         )
     }
 
     return (
         <StyledWeather>
+            <h3>Hourly</h3>
             {
                 weather.map((weather, key) => {
                     return (
@@ -50,16 +56,27 @@ const StyledWeather = styled.article`
     flex-direction: column;
     width: 100%;
     max-width: 600px;
+    box-shadow: -2px 2px 2px black;
+    margin: 20px 0;
+    h3 {
+        color: ${palette.accentColor};
+        font-size: ${palette.titleSize};
+        font-weight: ${palette.titleWeight};
+        font-family: "Bebas Neue", sans-serif;
+        text-align: center;
+        width: 100%;
+        max-width: 600px;
+        background: white;
+        border-radius: 4px 4px 0 0;
+    }
     .weather-wrapper {
         display: flex;
         align-items: center;
-        margin-bottom: 10px;
         width: 100%;
         max-width: 600px;
         padding: 10px;
         border: 1px solid ${palette.fadedWhite};
-        box-shadow: -2px 2px 2px black;
-        border-radius: 4px;
+        border-radius: 0 0 4px 4px;
         background-color: ${palette.backgroundColorTransparent};
         .time {
             font-size: ${palette.smallTextSize};
@@ -83,14 +100,15 @@ const StyledWeather = styled.article`
                     border-radius: 50%;
                 }
                 h4 {
-                    font-size: ${palette.subtitleSize};
+                    font-size: .9em;
                     color: ${palette.titleColor};
                     margin: 0 10px;
                 }
                 h5 {
                     color: ${palette.titleColor};
-                    font-size: ${palette.labelSize};
+                    font-size: .8em;
                     font-weight: 400;
+                    margin-left: auto;
                 }
             }
             .bottom-condition-container {
@@ -103,7 +121,7 @@ const StyledWeather = styled.article`
                 max-width: 200px;
                 margin-left: auto;
                 h6 {
-                    font-size: ${palette.smallTextSize};
+                    font-size: .8em;
                     display: flex;
                     justify-content: space-between;
                     width: auto;

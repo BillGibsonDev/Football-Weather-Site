@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 // styles
 import styled from "styled-components";
 import * as palette from '../../../ThemeVariables.js'
+
+// functions
 import { formatToEST } from "../../../components/formatToEst.js";
 
 export const GameDetails = ({game}) => {
@@ -24,6 +26,11 @@ export const GameDetails = ({game}) => {
         </div>
         <h6 className="date-channel">{day} {formatToEST(game.DateTime)} on {game.Channel}</h6>
         <div className="stadium-container">
+            {
+                !game.StadiumDetails.State
+                ? <h5 className="city">{game.StadiumDetails.City}, {game.StadiumDetails.Country}</h5>
+                : <h5 className="city">{game.StadiumDetails.City}, {game.StadiumDetails.State}</h5>
+            }
             <h6 className="stadium-name">{game.StadiumDetails.Name}</h6>
             <div className="stadium-details-container">
                 {
@@ -48,16 +55,15 @@ const StyledDetails = styled.article`
         display: flex;
         justify-content: center;
         align-items: center;
-        background: ${palette.lessFadedWhite};
+        background: white;
         border-top-right-radius: 3px;
         border-top-left-radius: 3px;
         margin-bottom: 6px;
         h2 {
-            font-size: 1.5em;
+            font-size: 2em;
             color: ${palette.accentColor};
             font-weight: 400;
-            font-family: sans-serif;
-            padding: 4px 0;
+            font-family: "Bebas Neue", sans-serif;
         }
         span {
             color: ${palette.accentColor};
@@ -66,12 +72,15 @@ const StyledDetails = styled.article`
         }
     }
     .date-channel {
-        margin: 0 auto 8px auto;
+        margin: 6px auto 0 auto;
         font-size: ${palette.subtitleSize};
         font-weight: 400;
-        color: ${palette.labelColor};
+        color: white;
         width: 100%;
+        height: 100%;
         text-align: center;
+        border-bottom: 2px solid ${palette.subtleAccentColor};
+        padding-bottom: 12px;
     }
     .stadium-container {
         display: flex;
@@ -79,14 +88,19 @@ const StyledDetails = styled.article`
         align-items: center;
         text-align: center;
         justify-content: center;
-        margin-bottom: 6px;
+        margin: 6px 0;
+        .city {
+            text-align: center;
+            font-size: 1.5em;
+            font-family: "Bebas Neue", sans-serif;
+        }
         h6 {
-            font-size: ${palette.subtitleSize};
+            font-size: .9em;
             font-weight: 400;
             color: ${palette.titleColor};
         }
-        .stadium-name{
-            font-weight: ${palette.titleWeight};;
+        .stadium-name {
+            font-weight: 400;
             color: ${palette.titleColor};
         }
         .stadium-details-container {
@@ -94,6 +108,7 @@ const StyledDetails = styled.article`
                 font-size: ${palette.labelSize};
                 font-weight: ${palette.labelWeight};;
                 color: ${palette.labelColor};
+                margin: 2px 0 0 0;
             }
         }
     }

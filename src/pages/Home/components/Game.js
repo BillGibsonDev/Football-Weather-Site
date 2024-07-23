@@ -11,22 +11,22 @@ import * as palette from '../../../ThemeVariables.js';
 
 export const Game = ({game}) => {
 
+  if(!game.GameDayWeather){
+    return (
+      <StyledGame>
+        <Link to={`/games/${game.GameData.ScoreID}`} className="game-link">
+          <GameDetails game={game.GameData} />
+          <h3>No Forecast Yet</h3>
+        </Link>
+      </StyledGame>
+    );
+  }
+
   return (
     <StyledGame>
       <Link to={`/games/${game.GameData.ScoreID}`} className="game-link">
-        <GameDetails
-          game={game.GameData}
-        />
-        {
-          !game.GameDayWeather
-          ? <h3>No Forecast Yet</h3>
-          : <>
-              <Weather
-                game={game.GameData}
-                weather={game.GameDayWeather}
-              />
-            </>
-        }
+        <GameDetails game={game.GameData} />
+        <Weather game={game.GameData} weather={game.GameDayWeather} /> 
       </Link>
       <Link to={`/games/${game.GameData.ScoreID}`} className="text-game-link">Full Forecast</Link>
     </StyledGame>
@@ -48,7 +48,7 @@ const StyledGame = styled.article`
   background: #00000084;
   &:hover, &:focus {
     transform: scale(1.005);
-    box-shadow: -4px 2px 0 ${palette.fadedWhite};
+    box-shadow: -2px 2px 2px ${palette.fadedWhite};
   }
   .game-link {
     width: 100%;
@@ -59,8 +59,7 @@ const StyledGame = styled.article`
     text-align: center;
     width: 100%;
     padding: 10px 0;
-    /* background: ${palette.accentColor}; */
-    color: white;
+    color: ${palette.accentColor};
     border-radius: 0;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
@@ -80,6 +79,8 @@ const StyledGame = styled.article`
   h3 {
     margin: 20px auto;
     text-align: center;
-    color: ${palette.accentColor};
+    color: white;
+    font-weight: 400;
+    font-size: 1em;
   }
 `;

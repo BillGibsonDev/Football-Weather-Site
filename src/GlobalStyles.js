@@ -10,7 +10,8 @@ const GlobalStyles = createGlobalStyle`
     }
     html {
         scroll-behavior: smooth;
-        font-family: 'Nunito', sans-serif;
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
         letter-spacing: 1px;
         background-color:#000000;
         width: 100%;
@@ -41,7 +42,7 @@ const GlobalStyles = createGlobalStyle`
     }
     body {
         border-radius: 4px;
-        font-family: 'Nunito', sans-serif;
+        font-family: "Inter", sans-serif;
         background: ${palette.backgroundColorTransparent};
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -61,7 +62,7 @@ const GlobalStyles = createGlobalStyle`
         text-decoration: none;
     }
     button, a, label, input, textarea {
-        font-family: 'Nunito', sans-serif;
+        font-family: "Inter", sans-serif;
         letter-spacing: 1px;
         padding: 2px;
         border-radius: 4px;

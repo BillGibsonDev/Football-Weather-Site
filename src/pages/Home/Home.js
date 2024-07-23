@@ -5,11 +5,11 @@ import styled from "styled-components";
 // components
 import { Game } from './components/Game';
 import { Loader } from '../../components/Loader';
+import { HelmetComponent } from "../../components/HelmetComponent";
 
 // redux
 import { connect, useDispatch } from 'react-redux';
 import { getGames } from '../../redux/actions/games.js';
-import { HelmetComponent } from "../../components/HelmetComponent";
 
 const Home = ({games}) => {
 
