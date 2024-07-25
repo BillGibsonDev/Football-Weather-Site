@@ -79,8 +79,7 @@ const StyledDetails = styled.article`
         width: 100%;
         height: 100%;
         text-align: center;
-        border-bottom: 2px solid ${palette.subtleAccentColor};
-        padding-bottom: 12px;
+         padding-bottom: 12px;
     }
     .stadium-container {
         display: flex;
@@ -105,9 +104,9 @@ const StyledDetails = styled.article`
         }
         .stadium-details-container {
             h6 {
-                font-size: ${palette.labelSize};
-                font-weight: ${palette.labelWeight};;
-                color: ${palette.labelColor};
+                font-size: .8em;
+                font-weight: 400;
+                color: rgb(217, 217, 217);
                 margin: 2px 0 0 0;
             }
         }
