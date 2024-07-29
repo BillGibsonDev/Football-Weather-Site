@@ -11,8 +11,6 @@ import * as palette from '../../../ThemeVariables.js';
 
 export const Game = ({game}) => {
 
-  console.log(game)
-
   if(!game.GameDayWeather){
     return (
       <StyledGame>
@@ -47,7 +45,7 @@ const StyledGame = styled.article`
   cursor: pointer;
   transition: 0.2s;
   box-shadow: -2px 2px 2px #00000081;
-  background: #000000;
+  background: ${palette.backgroundColorTransparent};
   &:hover, &:focus {
     transform: scale(1.005);
     box-shadow: -2px 2px 2px ${palette.fadedWhite};

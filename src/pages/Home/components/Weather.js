@@ -2,18 +2,16 @@
 import styled from 'styled-components';
 import * as palette from '../../../ThemeVariables.js';
 
-export const Weather = ({weather, game}) => {
+export const Weather = ({weather}) => {
 
     return (
         <StyledWeather>
             <div className="weather-wrapper">
                 <div className="top-condition-container">
-                    <div className="icon-container">
-                        <img src={weather.icon} alt={weather.shortForecast} />
-                    </div>
+                    <img src={weather.icon} alt="" />
                     <div className="icon-text-container">
+                        <h5>{weather.temperature}<span>&deg;</span></h5>
                         <h4>{weather.shortForecast}</h4>
-                        <h5>{weather.temperature}<span>F</span></h5>
                     </div>
                 </div>
                 <div className="bottom-condition-container">
@@ -36,49 +34,46 @@ const StyledWeather = styled.article`
             justify-content: center;
             align-items: center;
             margin: 0 auto;
-            .icon-container {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                max-width: 100px;
-                width: 30%;
-                img {
-                    width: 35px;
-                    height: 35px;
-                    border-radius: 50%;
-                }
+            img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                margin: 0 20px auto 0;
             }
             .icon-text-container {
-                margin: 6px 0;
                 max-width: 250px;
                 width: 70%;
                 h4 {
                     font-size: ${palette.labelSize};
                     color: ${palette.labelColor};
                     display: flex;
-                    font-weight: ${palette.titleWeight};
+                    font-weight: 400;
                     width: 100%;
-                    max-width: 250px;
                 }
                 h5 {
-                    font-size: ${palette.labelSize};
-                    font-weight: 200;
+                    margin-bottom: 6px;
+                    font-size: ${palette.subtitleSize};
+                    font-weight: 600;
                     color: ${palette.labelColor};
                 }
             }
         }
         .bottom-condition-container {
-            margin: auto;
+            margin: 10px auto;
+            width: 90%;
             h6 {
                 margin: 2px 0;
                 font-size: ${palette.smallTextSize};
                 display: flex;
                 justify-content: space-between;
                 min-width: 150px;
-                font-weight: ${palette.labelWeight};
+                font-weight: 400;
                 color: ${palette.labelColor};
                 .wind, .percip {
                     margin-right: auto;
+                }
+                span {
+                    font-weight: 200;
                 }
             }
         }

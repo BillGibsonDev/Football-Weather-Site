@@ -105,7 +105,8 @@ const StyledWeather = styled.article`
                     font-weight: 600;
                     display: flex;
                     justify-content: space-between;
-                    width: 200px;
+                    width: 100%;
+                    max-width: 300px;
                 }
                 .wind, .percip {
                     margin-right: auto;

@@ -9,12 +9,17 @@ import { formatToEST } from "../../../components/formatToEst.js";
 
 export const GameDetails = ({game}) => {
 
-    const [ day, setDay ] = useState('');
+    const [ dayDate, setDayDate ] = useState('')
 
     useEffect(() => {
-        const weekday = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
-        let d = new Date(game.Day)
-        setDay(weekday[d.getDay()])
+        const months = ["Jan", "Feb", "Mar", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+        const gameDate = new Date(game.Day);
+        const today = new Date();
+        if(today.getDate() !== gameDate.getDate()){
+            setDayDate(`${months[gameDate.getMonth()]} ${gameDate.getDate()}`);
+        } else {
+            setDayDate('');
+        }
     }, [game])
 
   return (
@@ -24,7 +29,23 @@ export const GameDetails = ({game}) => {
             <span>@</span>
             <h2>{game.HomeTeam}</h2>
         </div>
-        <h6 className="date-channel">{day} {formatToEST(game.DateTime)} on {game.Channel}</h6>
+        {
+            dayDate ? 
+            <h6 className="date-channel">{dayDate}, {formatToEST(game.DateTime)}
+                {
+                    game.Channel === 'ABC' ?
+                    <span>{game.Channel} / ESPN</span>
+                    :<span>{game.Channel}</span>
+                }
+            </h6>
+            : <h6 className="date-channel">{formatToEST(game.DateTime)}
+                {
+                    game.Channel === 'ABC' ?
+                    <span>{game.Channel} / ESPN</span>
+                    :<span>{game.Channel}</span>
+                }
+            </h6>
+        }
         <div className="stadium-container">
             {
                 !game.StadiumDetails.State
@@ -72,14 +93,18 @@ const StyledDetails = styled.article`
         }
     }
     .date-channel {
-        margin: 6px auto 0 auto;
-        font-size: ${palette.subtitleSize};
+        margin: 0 auto 8px auto;
+        font-size: 1.2em;
         font-weight: 400;
         color: white;
         width: 100%;
-        height: 100%;
         text-align: center;
-         padding-bottom: 12px;
+        display: flex;
+        flex-direction: column;
+        span {
+            font-size: .8em;
+            font-weight: 200;
+        }
     }
     .stadium-container {
         display: flex;
@@ -105,8 +130,7 @@ const StyledDetails = styled.article`
         .stadium-details-container {
             h6 {
                 font-size: .8em;
-                font-weight: 400;
-                color: rgb(217, 217, 217);
+                font-weight: 200;
                 margin: 2px 0 0 0;
             }
         }

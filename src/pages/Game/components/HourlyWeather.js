@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import * as palette from '../../../ThemeVariables.js';
 
 // functions
-import { formatToEST } from '../../../components/formatToEst.js';
+import { formatToESTHoursOnly } from '../../../components/formatToEst.js';
 
 export const HourlyWeather = ({ weather }) => {
 
@@ -32,8 +32,8 @@ export const HourlyWeather = ({ weather }) => {
                         <div className="weather-wrapper" key={key}>
                             <div className="left-container">
                                 <div className="time-temp-container">
-                                    <h5 className='time'>{formatToEST(weather.startTime)}</h5>
-                                    <h4>{weather.temperature}<span>F</span></h4>
+                                    <h5 className='time'>{formatToESTHoursOnly(weather.startTime)}</h5>
+                                    <h4>{weather.temperature}<span>&deg;</span></h4>
                                 </div>
                                 <h5>{weather.shortForecast}</h5>
                             </div>
@@ -56,7 +56,6 @@ const StyledWeather = styled.article`
     flex-direction: column;
     width: 100%;
     max-width: 600px;
-    box-shadow: -2px 2px 2px black;
     margin: 20px 0;
     h3 {
         color: ${palette.accentColor};
@@ -68,6 +67,7 @@ const StyledWeather = styled.article`
         max-width: 600px;
         background: white;
         border-radius: 4px 4px 0 0;
+        box-shadow: -2px 2px 2px black;
     }
     .weather-wrapper {
         display: flex;
@@ -75,17 +75,22 @@ const StyledWeather = styled.article`
         width: 100%;
         max-width: 600px;
         padding: 10px;
-        border: 1px solid ${palette.fadedWhite};
-        border-radius: 0 0 4px 4px;
+        border: 1px solid ${palette.accentColor2};
+        border-radius: 4px;
         background-color: ${palette.backgroundColorTransparent};
-        @media (max-width: 400px){
+        box-shadow: -2px 2px 2px black;
+        @media (max-width: 450px){
             flex-direction: column;
+            margin-bottom: 6px;
         } 
+        &:first-of-type{
+            border-radius: 0 0 4px 4px;
+        }
         .left-container {
             display: flex;
             flex-direction: column;
             width: 60%;
-            @media (max-width: 400px){
+            @media (max-width: 450px){
                 width: 100%;
             } 
             .time-temp-container {
@@ -95,7 +100,8 @@ const StyledWeather = styled.article`
                 .time {
                     font-size: ${palette.smallTextSize};
                     font-weight: 400;
-                    color: ${palette.labelColor};
+                    color: white;
+                    width: 50px;
                 }
                 h4 {
                     font-size: 1.5em;
@@ -107,7 +113,10 @@ const StyledWeather = styled.article`
             h5 {
                 color: ${palette.titleColor};
                 font-size: 1em;
-                font-weight: 400;
+                font-weight: 200;
+                @media (max-width: 450px){
+                    font-weight: 400;
+                } 
             }
         }
         .wind-percip-container {
@@ -119,7 +128,7 @@ const StyledWeather = styled.article`
             width: 100%;
             max-width: 200px;
             margin: 0 0 0 auto;
-            @media (max-width: 400px){
+            @media (max-width: 450px){
                 margin: 10px 0 0 0;
                 justify-content: baseline;
                 align-items: baseline;
@@ -133,6 +142,12 @@ const StyledWeather = styled.article`
                 max-width: 150px;
                 font-weight: 600;
                 color: ${palette.titleColor};
+                @media (max-width: 450px){
+                    padding: 10px 0;
+                    width: 100%;
+                    max-width: none;
+                    border-top: .2px solid #ffffff8b;
+                } 
                 .wind, .percip {
                     margin-right: auto;
                 }
