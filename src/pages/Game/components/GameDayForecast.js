@@ -22,20 +22,16 @@ export const GameDayWeather = ({ weather }) => {
 
     return (
         <StyledWeather>
-            <h3>Game Day</h3>
+            <h3>{weather.name}</h3>
             <div className="weather-wrapper">
                 <div className="top-container">
                     <img src={weather.icon} alt={weather.shortForecast} />
                     <div className="icon-text-container">
-                        <h4>{weather.shortForecast}</h4>
-                        <h5>{weather.temperature}<span>F</span></h5>
-                        <h6><span className="title">Wind</span>{weather.windSpeed}</h6>
-                        <h6><span className="title">Precipitation</span>{Math.floor(weather.probabilityOfPrecipitation.value)}<span className="unit">%</span></h6>
+                        <h5>{weather.temperature}<span>&deg;</span></h5>
+                        <p>{weather.detailedForecast}</p>
+                        <h6><span className="wind">Wind</span>{weather.windDirection} {weather.windSpeed}</h6>
+                        <h6><span className="percip">Precipitation</span>{Math.floor(weather.probabilityOfPrecipitation.value)}<span className="unit">%</span></h6>
                     </div>
-                </div>
-                <div className="bottom-container">
-                    <h4>Forecast</h4>
-                    <p>{weather.detailedForecast}</p>
                 </div>
             </div>
         </StyledWeather>
@@ -68,6 +64,8 @@ const StyledWeather = styled.article`
     .weather-wrapper {
         display: flex;
         align-items: center;
+        flex-direction: column;
+        justify-content: center;
         width: 100%;
         max-width: 600px;
         padding: 10px;
@@ -78,7 +76,7 @@ const StyledWeather = styled.article`
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 50%;
+            width: 90%;
             @media (max-width: 750px){
                 width: 100%;
             } 
@@ -86,50 +84,35 @@ const StyledWeather = styled.article`
                 width: 75px;
                 height: 75px;
                 border-radius: 50%;
+                margin: 10px 20px auto 0;
             }
             .icon-text-container {
                 margin-left: 10px;
-                .title {
-                    margin-right: auto;
-                }
-                h4 {
-                    font-size: ${palette.subtitleSize};
-                    color: white;
-                    font-weight: ${palette.titleWeight};
-                }
                 h5 {
-                    font-size: ${palette.labelSize};
+                    font-size: 2em;
                     color: ${palette.titleColor};
                     font-weight: ${palette.titleWeight};
+                }
+                p {
+                    font-size: 1em;
+                    color: white;
+                    width: 100%;
+                    margin: 10px 0 20px 0;
                 }
                 h6 {
                     color: ${palette.titleColor};
                     font-size: ${palette.smallTextSize};
-                    font-weight: ${palette.labelWeight};
+                    font-weight: 600;
                     display: flex;
                     justify-content: space-between;
-                    width: 150px;
+                    width: 200px;
                 }
-            }
-        }
-        .bottom-container {
-            display: flex;
-            flex-direction: column;
-            width: 50%;
-            max-width: 600px;
-            @media (max-width: 750px){
-                width: 100%;
-                margin-top: 20px;
-            } 
-            h4 {
-                font-size: 1.2em;
-                color: white;
-                font-weight: ${palette.titleWeight};
-            }
-            p {
-                font-size: .8em;
-                color: ${palette.labelColor};
-                width: 100%;
+                .wind, .percip {
+                    margin-right: auto;
+                }
+                span {
+                    font-weight: 200;
+                }
             }
         }
     }

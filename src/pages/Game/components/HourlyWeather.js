@@ -30,16 +30,16 @@ export const HourlyWeather = ({ weather }) => {
                 weather.map((weather, key) => {
                     return (
                         <div className="weather-wrapper" key={key}>
-                            <h4 className='time'>{formatToEST(weather.startTime)}</h4>
-                            <div className="weather-container">
-                                <div className="top-condition-container">
-                                    <h4>{weather.shortForecast}</h4>
-                                    <h5>{weather.temperature}<span>F</span></h5>
+                            <div className="left-container">
+                                <div className="time-temp-container">
+                                    <h5 className='time'>{formatToEST(weather.startTime)}</h5>
+                                    <h4>{weather.temperature}<span>F</span></h4>
                                 </div>
-                                <div className="bottom-condition-container">
-                                    <h6><span className="title">Wind</span>{weather.windSpeed}</h6>
-                                    <h6><span className="title">Precipitation</span>{Math.floor(weather.probabilityOfPrecipitation.value)}<span className="unit">%</span></h6>
-                                </div>
+                                <h5>{weather.shortForecast}</h5>
+                            </div>
+                            <div className="wind-percip-container">
+                                <h6><span className="wind">Wind</span>{weather.windDirection} {weather.windSpeed}</h6>
+                                <h6><span className="percip">Precipitation</span>{Math.floor(weather.probabilityOfPrecipitation.value)}<span className="unit">%</span></h6>
                             </div>
                         </div>
                     )
@@ -78,61 +78,69 @@ const StyledWeather = styled.article`
         border: 1px solid ${palette.fadedWhite};
         border-radius: 0 0 4px 4px;
         background-color: ${palette.backgroundColorTransparent};
-        .time {
-            font-size: ${palette.smallTextSize};
-            font-weight: ${palette.labelWeight};
-            color: #fff;
-        }
-        .weather-container {
+        @media (max-width: 400px){
+            flex-direction: column;
+        } 
+        .left-container {
             display: flex;
-            justify-content: space-evenly;
-            width: 80%;
-            @media (max-width: 450px){
+            flex-direction: column;
+            width: 60%;
+            @media (max-width: 400px){
                 width: 100%;
             } 
-            .top-condition-container {
+            .time-temp-container {
                 display: flex;
-                align-items: center;
-                margin: 0 auto;
-                img {
-                    width: 50px;
-                    height: 50px;
-                    border-radius: 50%;
-                }
-                h4 {
-                    font-size: .9em;
-                    color: ${palette.titleColor};
-                    margin: 0 10px;
-                }
-                h5 {
-                    color: ${palette.titleColor};
-                    font-size: .8em;
-                    font-weight: 400;
-                    margin-left: auto;
-                }
-            }
-            .bottom-condition-container {
-                display: flex;
-                flex-direction: column;
-                text-align: center;
-                align-items: center;
-                justify-content: flex-end;
-                width: 100%;
-                max-width: 200px;
-                margin-left: auto;
-                h6 {
-                    font-size: .8em;
-                    display: flex;
-                    justify-content: space-between;
-                    width: auto;
-                    width: 80%;
-                    max-width: 150px;
+                align-items: baseline;
+                margin-bottom: 10px;
+                .time {
+                    font-size: ${palette.smallTextSize};
                     font-weight: 400;
                     color: ${palette.labelColor};
-                    .title {
-                        margin-right: auto;
-                        color: ${palette.labelColor};
-                    }
+                }
+                h4 {
+                    font-size: 1.5em;
+                    color: ${palette.titleColor};
+                    margin: 0 10px;
+                    font-weight: 400;
+                }
+            }
+            h5 {
+                color: ${palette.titleColor};
+                font-size: 1em;
+                font-weight: 400;
+            }
+        }
+        .wind-percip-container {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 0 0 auto;
+            @media (max-width: 400px){
+                margin: 10px 0 0 0;
+                justify-content: baseline;
+                align-items: baseline;
+                max-width: none;
+            } 
+            h6 {
+                font-size: .8em;
+                display: flex;
+                justify-content: space-between;
+                width: 80%;
+                max-width: 150px;
+                font-weight: 600;
+                color: ${palette.titleColor};
+                .wind, .percip {
+                    margin-right: auto;
+                }
+                .wind {
+                    margin-bottom: 6px;
+                }
+                span {
+                    font-weight: 200;
                 }
             }
         }

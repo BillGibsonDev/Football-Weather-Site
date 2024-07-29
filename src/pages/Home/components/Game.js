@@ -11,6 +11,8 @@ import * as palette from '../../../ThemeVariables.js';
 
 export const Game = ({game}) => {
 
+  console.log(game)
+
   if(!game.GameDayWeather){
     return (
       <StyledGame>
@@ -45,7 +47,7 @@ const StyledGame = styled.article`
   cursor: pointer;
   transition: 0.2s;
   box-shadow: -2px 2px 2px #00000081;
-  background: #00000084;
+  background: #000000;
   &:hover, &:focus {
     transform: scale(1.005);
     box-shadow: -2px 2px 2px ${palette.fadedWhite};
@@ -59,14 +61,13 @@ const StyledGame = styled.article`
     text-align: center;
     width: 100%;
     padding: 10px 0;
-    color: ${palette.accentColor};
+    color: white;
     border-radius: 0;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
     transition: 0.2s;
     font-weight: ${palette.titleWeight};
     display: inline-block;
-    text-shadow: .5px .5px ${palette.accentColor2};
     &:hover, &:focus {
       text-decoration: underline;
     }

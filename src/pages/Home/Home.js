@@ -57,6 +57,7 @@ const StyledHome = styled.section`
   margin: auto;
   gap: 10px;
   width: 90%;
+  max-width: 900px;
   @media screen and (max-width: 520px) {
     grid-template-columns: 1fr;
   }

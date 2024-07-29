@@ -23,7 +23,7 @@ const GlobalStyles = createGlobalStyle`
             left: 50%;
             transform: translate(-50%, -50%);
             width: 100%;
-            max-width: 1000px;
+            /* max-width: 1000px; */
             height: 100%;
             background: url(${Background});
             background-repeat: no-repeat;
@@ -49,10 +49,9 @@ const GlobalStyles = createGlobalStyle`
         background-size: cover;
         background-position: center;
         padding: 2em 0;
-        margin: 2em auto;
-        min-height: 90vh;
+        margin: 0 auto;
+        min-height: 100vh;
         height: 100%;
-        max-width: 900px;
         width: 100%;
     }
     ul {

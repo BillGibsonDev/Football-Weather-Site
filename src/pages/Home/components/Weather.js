@@ -7,11 +7,6 @@ export const Weather = ({weather, game}) => {
     return (
         <StyledWeather>
             <div className="weather-wrapper">
-                {
-                    game.StadiumDetails.State === '' || game.StadiumDetails.State === null
-                    ? <h5 className="city">{game.StadiumDetails.City}, {game.StadiumDetails.Country}</h5>
-                    : <h5 className="city">{game.StadiumDetails.City}, {game.StadiumDetails.State}, {game.StadiumDetails.Country}</h5>
-                }
                 <div className="top-condition-container">
                     <div className="icon-container">
                         <img src={weather.icon} alt={weather.shortForecast} />
@@ -23,7 +18,7 @@ export const Weather = ({weather, game}) => {
                 </div>
                 <div className="bottom-condition-container">
                     <h6><span className="title">Wind</span>{weather.windSpeed}</h6>
-                    <h6><span className="title">Precipitation</span>{Math.floor(weather.probabilityOfPrecipitation.value)}<span className="unit">%</span></h6>
+                    <h6><span className="percip">Precipitation</span>{Math.floor(weather.probabilityOfPrecipitation.value)}<span className="unit">%</span></h6>
                 </div>
             </div>
         </StyledWeather>
@@ -36,16 +31,6 @@ const StyledWeather = styled.article`
     align-items: center;
     margin-bottom: 10px;
     .weather-wrapper {
-        h5 {
-            font-size: ${palette.labelSize};
-            font-weight: ${palette.labelWeight};
-            color: ${palette.labelColor};
-        }
-        .city {
-            text-align: center;
-            color: white;
-            font-weight: ${palette.titleWeight};
-        }
         .top-condition-container {
             display: flex;
             justify-content: center;
@@ -77,7 +62,7 @@ const StyledWeather = styled.article`
                 }
                 h5 {
                     font-size: ${palette.labelSize};
-                    font-weight: ${palette.titleWeight};
+                    font-weight: 200;
                     color: ${palette.labelColor};
                 }
             }
@@ -92,7 +77,7 @@ const StyledWeather = styled.article`
                 min-width: 150px;
                 font-weight: ${palette.labelWeight};
                 color: ${palette.labelColor};
-                .title {
+                .wind, .percip {
                     margin-right: auto;
                 }
             }

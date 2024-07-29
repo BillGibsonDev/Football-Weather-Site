@@ -7,7 +7,7 @@ export const titleColor = "#ffffff";
 export const backgroundColorTransparent = '#01336959';
 export const backgroundColor = '#013369';
 export const gameBackground = '#000000';
-export const labelColor = '#cecece';
+export const labelColor = '#d5d5d5';
 
 export const subtleAccentColor = '#d50a0a55'
 export const fadedWhite = '#ffffff24';
