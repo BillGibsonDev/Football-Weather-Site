@@ -70,7 +70,7 @@ const StyledDetails = styled.article`
     width: 100%;
     max-width: 600px;
     border: 1px solid ${palette.fadedWhite};
-    box-shadow: -2px 2px 2px black;
+    box-shadow: -2px 2px 1px black;
     margin: 10px 0 0 0;
     border-radius: 4px;
     background-color: ${palette.backgroundColorTransparent};

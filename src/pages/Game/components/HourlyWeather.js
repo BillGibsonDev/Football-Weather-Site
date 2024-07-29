@@ -75,14 +75,11 @@ const StyledWeather = styled.article`
         width: 100%;
         max-width: 600px;
         padding: 10px;
-        border: 1px solid ${palette.accentColor2};
+        border: 1px solid ${palette.fadedWhite};
         border-radius: 4px;
         background-color: ${palette.backgroundColorTransparent};
-        box-shadow: -2px 2px 2px black;
-        @media (max-width: 450px){
-            flex-direction: column;
-            margin-bottom: 6px;
-        } 
+        box-shadow: -2px 2px 1px black;
+        margin-bottom: 6px;
         &:first-of-type{
             border-radius: 0 0 4px 4px;
         }

@@ -45,7 +45,7 @@ const StyledWeather = styled.article`
     flex-direction: column;
     width: 100%;
     max-width: 600px;
-    box-shadow: -2px 2px 2px black;
+    box-shadow: -2px 2px 1px black;
     margin: 20px 0 0 0;
     @media (max-width: 750px){
         flex-direction: column;

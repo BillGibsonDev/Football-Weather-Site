@@ -44,11 +44,11 @@ const StyledGame = styled.article`
   height: auto;
   cursor: pointer;
   transition: 0.2s;
-  box-shadow: -2px 2px 2px #00000081;
+  box-shadow: -2px 2px 1px #00000081;
   background: ${palette.backgroundColorTransparent};
   &:hover, &:focus {
     transform: scale(1.005);
-    box-shadow: -2px 2px 2px ${palette.fadedWhite};
+    box-shadow: -2px 2px 1px ${palette.fadedWhite};
   }
   .game-link {
     width: 100%;
