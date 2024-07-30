@@ -29,6 +29,7 @@ const StyledWeather = styled.article`
     align-items: center;
     margin-bottom: 10px;
     .weather-wrapper {
+        margin-top: 10px;
         .top-condition-container {
             display: flex;
             justify-content: center;
@@ -45,7 +46,6 @@ const StyledWeather = styled.article`
                 width: 70%;
                 h4 {
                     font-size: ${palette.labelSize};
-                    color: ${palette.labelColor};
                     display: flex;
                     font-weight: 400;
                     width: 100%;
@@ -54,7 +54,6 @@ const StyledWeather = styled.article`
                     margin-bottom: 6px;
                     font-size: ${palette.subtitleSize};
                     font-weight: 600;
-                    color: ${palette.labelColor};
                 }
             }
         }
