@@ -80,6 +80,9 @@ const StyledWeather = styled.article`
         background-color: ${palette.backgroundColorTransparent};
         box-shadow: -2px 2px 1px black;
         margin-bottom: 6px;
+        @media (max-width: 450px){
+            flex-direction: column;
+        } 
         &:first-of-type{
             border-radius: 0 0 4px 4px;
         }
