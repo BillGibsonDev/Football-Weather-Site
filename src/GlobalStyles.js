@@ -33,12 +33,6 @@ const GlobalStyles = createGlobalStyle`
             opacity: 0.35;
             z-index: -1; 
         }
-        @media (max-width: 750px){
-            font-size: 90%;
-        } 
-        @media (max-width: 450px){
-            font-size: 80%;
-        } 
     }
     body {
         border-radius: 4px;

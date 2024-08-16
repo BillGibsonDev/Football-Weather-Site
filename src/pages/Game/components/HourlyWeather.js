@@ -153,6 +153,9 @@ const StyledWeather = styled.article`
                 }
                 .wind {
                     margin-bottom: 6px;
+                    @media (max-width: 450px){
+                        margin-bottom: 0;
+                    } 
                 }
                 span {
                     font-weight: 200;
