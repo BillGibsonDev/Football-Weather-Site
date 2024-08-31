@@ -19,11 +19,7 @@ const Home = ({games}) => {
     dispatch(getGames());
   }, [dispatch])
 
-  if(!games) {
-    return (
-      <Loader />
-    )
-  }
+  if(!games) { return ( <Loader /> ) }
 
   const sortGamesByTime = (arr) => {
     arr.sort((a, b) => {
