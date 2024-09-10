@@ -14,7 +14,7 @@ const Nav = ({games}) => {
     return (
       <StyledNav>
         <Link to="/">Football Forecast</Link>
-        <h3>2024 Preseason</h3>
+        <h3>2024 Season</h3>
         {
           games[0]
           ? <h2>Week {games[0].GameData.Week}</h2>
