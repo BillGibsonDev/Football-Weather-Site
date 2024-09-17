@@ -1,9 +1,8 @@
 import { DateTime } from "luxon";
 
 export const formatToEST = (dateString) => {
-    const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-    const dt = DateTime.fromISO(dateString, {zone: userTimeZone});
+    const dt = DateTime.fromISO(dateString, {zone: 'America/New_York'});
 
     const estTime = dt.setZone('America/New_York');
 
