@@ -104,7 +104,8 @@ const StyledDetails = styled.article`
         flex-direction: column;
         span {
             font-size: .8em;
-            font-weight: 200;
+            font-weight: 700;
+            color: ${palette.accentColor};
         }
     }
     .city {
@@ -112,6 +113,7 @@ const StyledDetails = styled.article`
         margin: 20px auto 0 auto;
         font-size: ${palette.titleSize};
         font-family: "Bebas Neue", sans-serif;
+        font-weight: 400;
     }
     .stadium-container {
         display: flex;

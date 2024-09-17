@@ -24,27 +24,22 @@ export const GameDetails = ({game}) => {
 
   return (
     <StyledDetails>
+        <div className="date-container">
+            {
+                dayDate ? 
+                <h2 className="date-text">{dayDate}, {formatToEST(game.DateTime)}</h2>
+                : <h2 className="date-text">{formatToEST(game.DateTime)}</h2>
+            }
+        </div>
         <div className="teams-container">
             <h2>{game.AwayTeam}</h2>
             <span>@</span>
             <h2>{game.HomeTeam}</h2>
         </div>
         {
-            dayDate ? 
-            <h6 className="date-channel">{dayDate}, {formatToEST(game.DateTime)}
-                {
-                    game.Channel === 'ABC' ?
-                    <span>{game.Channel} / ESPN</span>
-                    :<span>{game.Channel}</span>
-                }
-            </h6>
-            : <h6 className="date-channel">{formatToEST(game.DateTime)}
-                {
-                    game.Channel === 'ABC' ?
-                    <span>{game.Channel} / ESPN</span>
-                    :<span>{game.Channel}</span>
-                }
-            </h6>
+            game.Channel === 'ABC' ?
+            <h3 className="channel-text">{game.Channel} / ESPN</h3>
+            :<h3 className="channel-text">{game.Channel}</h3>
         }
         <div className="stadium-container">
             {
@@ -72,7 +67,7 @@ const StyledDetails = styled.article`
     width: 100%;
     border-bottom: 2px solid ${palette.subtleAccentColor};
     margin-bottom: 6px;
-    .teams-container {
+    .date-container, .teams-container {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -91,20 +86,26 @@ const StyledDetails = styled.article`
             margin: 0 10px;
             font-size: 1em;
         }
-    }
-    .date-channel {
-        margin: 0 auto 8px auto;
-        font-size: 1.2em;
-        font-weight: 400;
-        color: white;
-        width: 100%;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        span {
-            font-size: .8em;
-            font-weight: 200;
+        .date-text {
+            font-size: 1.5em;
         }
+    }
+    .teams-container {
+        background: none;
+        margin-bottom: none;
+        margin: 0;
+        h2 {
+            font-size: 2.5em;
+            text-shadow: 3px 1px 0 black;
+        }
+        h2, span {
+            color: white;
+        }
+    }
+    .channel-text {
+        margin: 0 0 10px 0;
+        color: ${palette.accentColor};
+        font-weight: 700;
     }
     .stadium-container {
         display: flex;
@@ -116,6 +117,8 @@ const StyledDetails = styled.article`
         .city {
             text-align: center;
             font-size: 1.5em;
+            font-weight: 400;
+            letter-spacing: 2px;
             font-family: "Bebas Neue", sans-serif;
         }
         h6 {

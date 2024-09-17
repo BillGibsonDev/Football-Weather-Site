@@ -2,7 +2,17 @@ import styled from "styled-components";
 import * as palette from '../ThemeVariables.js';
 import { Link } from "react-router-dom";
 
-export const UnknownPath = () => {
+export const UnknownPath = ({game}) => {
+    if(game){
+        return (
+            <StyledPage>
+                <h1>This game is no longer available.</h1>
+                <h2>Games from previous days are deleted to save server space.</h2>
+                <h2>Click here to return to the home page.</h2>
+                <Link to={'/'}>Home</Link>
+            </StyledPage>
+        )
+    }
   return (
     <StyledPage>
         <h1>404 Page Not Found</h1>
@@ -43,6 +53,7 @@ align-items: center;
         border-radius: 4px;
         background: ${palette.accentColor};
         transition: 0.2s;
+        box-shadow: 1px 1px 4px black;
         &:hover {
             text-decoration: underline;
             background: black;

@@ -13,6 +13,7 @@ import { GameDetails } from "./components/GameDetails";
 import { GameDayWeather } from "./components/GameDayForecast.js";
 import { Loader } from "../../components/Loader.js";
 import { HelmetComponent } from "../../components/HelmetComponent.js";
+import { UnknownPath } from '../404Page';
 
 // redux
 import { connect, useDispatch } from 'react-redux';
@@ -35,13 +36,19 @@ const Game = ({ games }) => {
 
   const game = games.find(game => game.GameData.ScoreID === Number(scoreId));
 
+  if(game){
+    return (
+      <StyledGame>
+        <HelmetComponent game={game.GameData} />
+        <GameDetails game={game} />
+        <GameDayWeather weather={game.GameDayWeather} />
+        <HourlyWeather weather={game.HourlyWeather} />
+      </StyledGame>
+    )
+  }
+
   return (
-    <StyledGame>
-      <HelmetComponent game={game.GameData} />
-      <GameDetails game={game} />
-      <GameDayWeather  weather={game.GameDayWeather} />
-      <HourlyWeather weather={game.HourlyWeather} />
-    </StyledGame>
+    <UnknownPath game={true}/>
   )
 }
 
