@@ -1,23 +1,28 @@
 export const formatToEST = (dateString) => {
+    const date = new Date(dateString);
     const options = { 
         timeZone: 'America/New_York', 
         hour: 'numeric', 
         minute: '2-digit', 
         hour12: true 
     };
-    const weatherStartTimeEDT = new Intl.DateTimeFormat('en-US', options).format(new Date(dateString));
-    const [time, period] = weatherStartTimeEDT.split(' ');
-    const formattedTime = `${time} ${period} ET`;
+    const formatter = new Intl.DateTimeFormat('en-US', options);
+    const formattedTime = formatter.format(date);
+    const [time, period] = formattedTime.split(' ');
 
-    return formattedTime;
+    return `${time} ${period} ET`;
 }
 
 export const formatToESTHoursOnly = (dateString) => {
+    const date = new Date(dateString);
     const options = { 
         timeZone: 'America/New_York', 
         hour: 'numeric', 
         hour12: true 
     };
-    const weatherStartTimeEDT = new Intl.DateTimeFormat('en-US', options).format(new Date(dateString));
-    return weatherStartTimeEDT;
+    const formatter = new Intl.DateTimeFormat('en-US', options);
+    const formattedTime = formatter.format(date);
+    const [time, period] = formattedTime.split(' ');
+
+    return `${time} ${period} ET`;
 }
