@@ -1,19 +1,23 @@
 export const formatToEST = (dateString) => {
-    const weatherStartTimeEDT = new Date(dateString).toLocaleString('en-US', { timeZone: 'America/New_York' });
-    const weatherTime = weatherStartTimeEDT; 
-    const splitWeatherTime = weatherTime.split(' ');
-    const weatherHourAndAbbreviation = splitWeatherTime[1].split(':');
-    const time = `${weatherHourAndAbbreviation[0]}:${weatherHourAndAbbreviation[1]} ${splitWeatherTime[2]} ET`;
+    const options = { 
+        timeZone: 'America/New_York', 
+        hour: 'numeric', 
+        minute: '2-digit', 
+        hour12: true 
+    };
+    const weatherStartTimeEDT = new Intl.DateTimeFormat('en-US', options).format(new Date(dateString));
+    const [time, period] = weatherStartTimeEDT.split(' ');
+    const formattedTime = `${time} ${period} ET`;
 
-    return time;
+    return formattedTime;
 }
 
 export const formatToESTHoursOnly = (dateString) => {
-    const weatherStartTimeEDT = new Date(dateString).toLocaleString('en-US', { timeZone: 'America/New_York' });
-    const weatherTime = weatherStartTimeEDT; 
-    const splitWeatherTime = weatherTime.split(' ');
-    const weatherHourAndAbbreviation = splitWeatherTime[1].split(':');
-    const time = `${weatherHourAndAbbreviation[0]} ${splitWeatherTime[2]}`;
-
-    return time;
+    const options = { 
+        timeZone: 'America/New_York', 
+        hour: 'numeric', 
+        hour12: true 
+    };
+    const weatherStartTimeEDT = new Intl.DateTimeFormat('en-US', options).format(new Date(dateString));
+    return weatherStartTimeEDT;
 }
