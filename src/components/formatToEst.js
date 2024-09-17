@@ -1,28 +1,17 @@
-export const formatToEST = (dateString) => {
-    const date = new Date(dateString);
-    const options = { 
-        timeZone: 'America/New_York', 
-        hour: 'numeric', 
-        minute: '2-digit', 
-        hour12: true 
-    };
-    const formatter = new Intl.DateTimeFormat('en-US', options);
-    const formattedTime = formatter.format(date);
-    const [time, period] = formattedTime.split(' ');
+import { DateTime } from "luxon";
 
-    return `${time} ${period} ET`;
+export const formatToEST = (dateString) => {
+    const dt = DateTime.fromISO(dateString);
+
+    const estTime = dt.setZone('America/New_York');
+
+    return `${estTime.toFormat('h:mm a')} ET`;
 }
 
 export const formatToESTHoursOnly = (dateString) => {
-    const date = new Date(dateString);
-    const options = { 
-        timeZone: 'America/New_York', 
-        hour: 'numeric', 
-        hour12: true 
-    };
-    const formatter = new Intl.DateTimeFormat('en-US', options);
-    const formattedTime = formatter.format(date);
-    const [time, period] = formattedTime.split(' ');
+    const dt = DateTime.fromISO(dateString, { zone: 'utc' });
 
-    return `${time} ${period} ET`;
+    const estTime = dt.setZone('America/New_York');
+
+    return `${estTime.toFormat('h a')}`;
 }
