@@ -11,7 +11,7 @@ export const Weather = ({weather}) => {
                     <img src={weather.icon} alt="" />
                     <div className="icon-text-container">
                         <h5>{weather.temperature}<span>&deg;</span></h5>
-                        <h4>{weather.shortForecast}</h4>
+                        <p>{weather.shortForecast}</p>
                     </div>
                 </div>
                 <div className="bottom-condition-container">
@@ -30,6 +30,7 @@ const StyledWeather = styled.article`
     margin-bottom: 10px;
     .weather-wrapper {
         margin-top: 10px;
+        width: 65%;
         .top-condition-container {
             display: flex;
             justify-content: center;
@@ -44,11 +45,12 @@ const StyledWeather = styled.article`
             .icon-text-container {
                 max-width: 250px;
                 width: 70%;
-                h4 {
+                p {
                     font-size: ${palette.labelSize};
                     display: flex;
                     font-weight: 400;
                     width: 100%;
+                    color: white;
                 }
                 h5 {
                     margin-bottom: 6px;

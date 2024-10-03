@@ -93,7 +93,9 @@ const StyledDetails = styled.article`
     .teams-container {
         background: none;
         margin-bottom: none;
-        margin: 0;
+        margin: 6px 0 0 0;
+        line-height: .8;
+
         h2 {
             font-size: 2.5em;
             text-shadow: 3px 1px 0 black;
